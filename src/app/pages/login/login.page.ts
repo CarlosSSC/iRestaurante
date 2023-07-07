@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import * as CryptoJS from 'crypto-js';
@@ -18,6 +19,7 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private alertController: AlertController,
     ) { }
 
   ngOnInit() {
@@ -25,6 +27,16 @@ export class LoginPage implements OnInit {
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     })
+  }
+
+  async showErrorAlert() {
+    const alert = await this.alertController.create({
+      header: 'Login Error',
+      message: 'The Email or Password are not correct.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   submit() {
@@ -40,12 +52,14 @@ export class LoginPage implements OnInit {
             this.router.navigate(['/order-selection'])
           }
           else {
-            console.log('No valido')
+            console.log('No valido');
+            this.showErrorAlert();
           }
         },
       )
     }
     else console.log('Campos erróneos');
+    this.showErrorAlert();
 
   }
 
