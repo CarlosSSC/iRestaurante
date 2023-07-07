@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 import { Barcode, BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
 
 @Component({
@@ -11,7 +11,7 @@ export class OrderSelectionPage implements OnInit {
 
   isSupported = false;
 
-  constructor(private alertController: AlertController) { }
+  constructor(private alertController: AlertController, navCtrl: NavController) { }
 
   ngOnInit() {
     BarcodeScanner.isSupported().then((result) => {
@@ -25,7 +25,7 @@ export class OrderSelectionPage implements OnInit {
       this.presentAlert();
       return;
     }
-    const result = await BarcodeScanner.scan();
+    /*const result = await BarcodeScanner.scan();
     if (result.content && result.format === 'QR_CODE') {
       // Verificar el contenido del código QR
       if (result.content === 'CÓDIGO_CORRECTO') { // Reemplazar 'CÓDIGO_CORRECTO' con el valor correcto que deseas
@@ -37,7 +37,7 @@ export class OrderSelectionPage implements OnInit {
     } else {
       // No se escaneó un código QR válido
       console.log('No se escaneó un código QR válido');
-    }
+    }*/
   }
 
   async requestPermissions(): Promise<boolean> {
