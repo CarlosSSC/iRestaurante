@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -19,7 +20,8 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
-    private storage: StorageService
+    private storage: StorageService,
+    private alertController: AlertController,
     ) { }
 
   async ngOnInit() {
@@ -30,6 +32,16 @@ export class LoginPage implements OnInit {
 
     const user = await this.storage.get("USER_INFO");
     if (user) this.router.navigate(['/order-selection'], {replaceUrl: true});
+  }
+
+  async showErrorAlert() {
+    const alert = await this.alertController.create({
+      header: 'Login Error',
+      message: 'The Email or Password are not correct.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   submit() {
@@ -44,11 +56,13 @@ export class LoginPage implements OnInit {
         },
         error: (error) => {
           throw new Error(error);
+          this.showErrorAlert();
         }
       }
       )
     }
     else console.log('Campos erróneos');
+    this.showErrorAlert();
 
   }
 
