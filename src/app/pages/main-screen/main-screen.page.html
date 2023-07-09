@@ -6,12 +6,8 @@
 
   <div class="horizontal-buttons-container">
     <div class="horizontal-buttons-inner">
-      <ion-button *ngFor="let button of buttons; let i = index"
-      expand="full"
-      fill="solid"
-      class="horizontal-button"
-      [class.selected]="i === selectedButtonIndex"
-      (click)="selectButton(i)">
+      <ion-button *ngFor="let button of buttons; let i = index" expand="full" fill="solid" class="horizontal-button"
+      [class.selected]="i === selectedButtonIndex" (click)="selectButton(i)">
       {{ button.label }}
       </ion-button>
     </div>
@@ -36,7 +32,7 @@
   </ion-grid>
 
   <div class="sticky-footer">
-    <ion-button expand="full" fill="solid" class="view-order-button">View Order</ion-button>
+    <ion-button expand="full" fill="solid" class="view-order-button" routerLink="/cart-screen">View Order</ion-button>
   </div>
 
 </ion-content>
