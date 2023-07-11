@@ -10,6 +10,8 @@ import * as CryptoJS from 'crypto-js';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  showAlert: boolean = false;
+  alertMessage: string = '';
   form: any;
   submitting: boolean = false;
 
@@ -21,7 +23,7 @@ export class SignupPage implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       firstName: ['', [Validators.required]],
       lastName: ['Test', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -47,7 +49,26 @@ export class SignupPage implements OnInit {
           throw new Error(error)
         }
       })
-    } else console.log('Campos erróneos', this.errorControl);
+    } else {
+      console.log('Campos erróneos', this.errorControl);
+      if (!params.confirmPassword || !params.password || !params.firstName){
+        this.showAlert = true;
+        this.alertMessage = 'No Blank spaces allowed.';
+        return;
+      } else if (!params.email.toString().includes("@") || !params.email.toString().includes(".")){
+        this.showAlert = true;
+        this.alertMessage = 'Email not valid.';
+        return;
+      } else if (params.password.toString().lenght < 8){
+        this.showAlert = true;
+        this.alertMessage = 'Password not valid.';
+        return;
+      } else if (params.password.lenght != params.confirmPassword){
+        this.showAlert = true;
+        this.alertMessage = 'Password confirmation not valid.';
+        return;
+      }
+    }
 
   }
 

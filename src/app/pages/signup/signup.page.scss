@@ -42,6 +42,19 @@ ion-col {
     
   }
   
+  .alert-message {
+    color: #691911;
+    background-color: #f4d6d2;
+    border-color: #f0c5c1;
+    border-radius: 10px;
+    border-collapse: separate;
+    font-size: 17px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .gbutton {
     margin-top: 15px;
     margin-bottom: 30px;
