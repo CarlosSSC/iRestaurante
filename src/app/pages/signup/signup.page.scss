@@ -18,7 +18,25 @@ ion-col {
     justify-content: center;
     align-items: center;
   }
+
+  h2 {
+    color: white;
+  }
+
+  p {
+    color: white;
+  }
   
+  .name {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .input-wrapper {
+    flex: 1;
+    margin-right: 10px; /* Adjust this value as needed */
+  }
+
   .login-form {
     width: 100%;
     max-width: 400px;

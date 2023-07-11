@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'cart-screen',
     loadChildren: () => import('./pages/cart-screen/cart-screen.module').then( m => m.CartScreenPageModule)
   },
+  {
+    path: 'payment-screen',
+    loadChildren: () => import('./pages/payment-screen/payment-screen.module').then( m => m.PaymentScreenPageModule)
+  },
 
 
 ];

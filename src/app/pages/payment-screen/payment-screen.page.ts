@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'app-cart-screen',
-  templateUrl: './cart-screen.page.html',
-  styleUrls: ['./cart-screen.page.scss'],
+  selector: 'app-payment-screen',
+  templateUrl: './payment-screen.page.html',
+  styleUrls: ['./payment-screen.page.scss'],
 })
-export class CartScreenPage implements OnInit {
+export class PaymentScreenPage implements OnInit {
   @ViewChild('productList', { static: true }) productList!: ElementRef;
 
   products = [
@@ -15,21 +15,10 @@ export class CartScreenPage implements OnInit {
       price: '$10',
       imageUrl: 'assets/images/itemInfo.jpeg',
     },
-    {
-      name: 'Product 2',
-      quantity: 2,
-      price: '$20',
-      imageUrl: 'assets/images/itemInfo.jpeg',
-    },
-    {
-      name: 'Product 3',
-      quantity: 3,
-      price: '$30',
-      imageUrl: 'assets/images/itemInfo.jpeg',
-    },
+    
   ];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.generateProductElements();
@@ -61,6 +50,7 @@ export class CartScreenPage implements OnInit {
       textDiv.style.marginLeft = '10px';
       textDiv.style.display = 'inline-block';
       textDiv.style.paddingBottom = '20px';
+      textDiv.style.paddingLeft = '75px';
 
 
       const itemName = document.createElement('p');
@@ -75,7 +65,10 @@ export class CartScreenPage implements OnInit {
       itemQuantity.textContent = `Quantity: ${product.quantity}`;
 
       const itemPrice = document.createElement('p');
-      itemPrice.textContent = `Price: ${product.price}`;
+      itemPrice.textContent = ` ${product.price}`;
+
+      itemPrice.style.justifyContent = 'center';
+      itemPrice.style.display = 'flex';
 
       textDiv.appendChild(itemName);
       textDiv.appendChild(itemQuantity);
