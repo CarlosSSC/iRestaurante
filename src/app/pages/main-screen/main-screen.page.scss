@@ -79,7 +79,8 @@ ion-content {
   text-transform: uppercase;
   display: flex;
   justify-content: center;
-  padding-top: 10px;
+  padding-top: 22px;
+  padding-left: 20px;
 }
 
 .horizontal-buttons-container {
@@ -100,8 +101,8 @@ ion-content {
   color: white;
   overflow: hidden;
   perspective: 1px;
-  width:77px;
-  height:29px;
+  width: 88px;
+  height: 34px;
 
   &.selected {
     --background: #389afd;
