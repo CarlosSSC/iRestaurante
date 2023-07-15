@@ -19,12 +19,10 @@ const routes: Routes = [
   {
     path: 'order-selection',
     loadChildren: () => import('./pages/order-selection/order-selection.module').then( m => m.OrderSelectionPageModule),
-    canActivate: [AuthGuard]
   },
   {
     path: 'main-screen',
     loadChildren: () => import('./pages/main-screen/main-screen.module').then( m => m.MainScreenPageModule),
-    canActivate: [AuthGuard]
   },
   {
     path: 'item-information',
