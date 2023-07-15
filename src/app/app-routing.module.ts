@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'payment-screen',
     loadChildren: () => import('./pages/payment-screen/payment-screen.module').then( m => m.PaymentScreenPageModule)
   },
+  {
+    path: 'add-more',
+    loadChildren: () => import('./pages/add-more/add-more.module').then( m => m.AddMorePageModule)
+  },
 
 
 ];
