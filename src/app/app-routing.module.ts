@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { AuthGuard } from './guards/auth.guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+//In case of testing specific pages, delete "canActivate: [AuthGuard]" and change "redirectTo:" the page being tested
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'order-selection',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -14,15 +14,18 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'order-selection',
     loadChildren: () => import('./pages/order-selection/order-selection.module').then( m => m.OrderSelectionPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'main-screen',
     loadChildren: () => import('./pages/main-screen/main-screen.module').then( m => m.MainScreenPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'item-information',
