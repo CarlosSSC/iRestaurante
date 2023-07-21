@@ -11,12 +11,13 @@
             <img src="assets/images/Blank_Square.svg" class="logo-image">
           </div>
 
-          <form>
+          <h2><ion-icon name="person-outline"></ion-icon>Your name</h2>
+          <form [formGroup]="form" (ngSubmit)="submit()">
             <div class="name">
               <div class="input-wrapper">
                 <h2>First name*</h2>
                 <ion-item lines="none">
-                  <ion-input type="text" style="color: black; text-align: center;"></ion-input>
+                  <ion-input formControlName="firstName" type="text" style="color: black; text-align: center;"></ion-input>
                 </ion-item>
               </div>
             
@@ -30,7 +31,7 @@
 
             <h2>Email*</h2>
             <ion-item lines="none">
-              <ion-input type="text" style="color: black; text-align: center;"></ion-input>
+              <ion-input formControlName="email" type="text" style="color: black; text-align: center;"></ion-input>
             </ion-item>
 
             <h2>Phone number</h2>
@@ -40,12 +41,12 @@
 
             <h2>Password*</h2>
             <ion-item lines="none">
-              <ion-input type="password" style="color: black; text-align: center;"></ion-input>
+              <ion-input formControlName="password" type="password" style="color: black; text-align: center;"></ion-input>
             </ion-item>
 
             <h2>Confirm Password*</h2>
             <ion-item lines="none">
-              <ion-input type="password" style="color: black; text-align: center;"></ion-input>
+              <ion-input formControlName="confirmPassword" type="password" style="color: black; text-align: center;"></ion-input>
             </ion-item>
 
             <ion-button class="gbutton" type="submit">CREATE ACCOUNT</ion-button>

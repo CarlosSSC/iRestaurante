@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
+import { AuthGuard } from './guards/auth.guard';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'order-selection',
     pathMatch: 'full'
   },
   {
@@ -14,17 +15,21 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
-  },  {
+  },
+  {
     path: 'order-selection',
-    loadChildren: () => import('./pages/order-selection/order-selection.module').then( m => m.OrderSelectionPageModule)
+    loadChildren: () => import('./pages/order-selection/order-selection.module').then( m => m.OrderSelectionPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'main-screen',
-    loadChildren: () => import('./pages/main-screen/main-screen.module').then( m => m.MainScreenPageModule)
+    loadChildren: () => import('./pages/main-screen/main-screen.module').then( m => m.MainScreenPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'item-information',
-    loadChildren: () => import('./pages/item-information/item-information.module').then( m => m.ItemInformationPageModule)
+    loadChildren: () => import('./pages/item-information/item-information.module').then( m => m.ItemInformationPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'cart-screen',
@@ -38,7 +43,6 @@ const routes: Routes = [
     path: 'add-more',
     loadChildren: () => import('./pages/add-more/add-more.module').then( m => m.AddMorePageModule)
   },
-
 
 ];
 

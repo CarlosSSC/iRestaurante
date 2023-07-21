@@ -62,6 +62,19 @@ ion-col {
     overflow: hidden;
   }
 
+  .error-message {
+    color: #691911;
+    background-color: #f4d6d2;
+    border-color: #f0c5c1;
+    border-radius: 10px;
+    border-collapse: separate;
+    font-size: 20px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .image-container {
     position: relative;
   }

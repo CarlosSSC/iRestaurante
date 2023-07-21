@@ -15,19 +15,22 @@
     <ion-row>
       <ion-col size="12" size-md="8" offset-md="2" size-lg="6" offset-lg="3">
         <div class="login-form">
-
+          <div *ngIf="showError" class="error-message">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+             The Email or Password is incorrect.
+          </div>
+          <form [formGroup]="form" (ngSubmit)="submit()">
           <h2 style="color: white;"><ion-icon name="person-outline"></ion-icon> Username</h2>
-          <form>
             <ion-item lines="none">
               <!-- <ion-label position="floating"></ion-label> -->
-              <ion-input type="text" style="color: black; text-align: center;"></ion-input>
+              <ion-input formControlName="email" type="text" style="color: black; text-align: center;"></ion-input>
             </ion-item>
             <h2 style="color: white;"><ion-icon name="lock-closed-outline"></ion-icon> Password</h2>
             <ion-item lines="none">
               <!-- <ion-label position="floating"></ion-label> -->
-              <ion-input type="password" style="color: black; text-align: center;"></ion-input>
+              <ion-input formControlName="password" type="password" style="color: black; text-align: center;"></ion-input>
             </ion-item>
-            <ion-button  class="gbutton" type="submit" routerLink="/order-selection">LOGIN</ion-button>
+            <ion-button  class="gbutton" type="submit">LOGIN</ion-button>
             <div class="signup-link">
               <p style="color: white;">Don't have an account? <br> Sign up <ion-button size="small" class="clearButton" fill="clear" routerLink="/signup"> here</ion-button></p>
             </div>
