@@ -33,14 +33,12 @@
                 <div class="title-modal">
                   SELECT A RESTAURANT
                 </div>
-
-                <ion-select class="dropdown_Delivery" placeholder="Select">
-                  <ion-select-option value="restaurant1">Restaurant 1</ion-select-option>
-                  <ion-select-option value="restaurant2">Restaurant 2</ion-select-option>
-                  <ion-select-option value="restaurant3">Restaurant 3</ion-select-option>
+                <!--Normal option show up in frontend. Must be ts file fault-->
+                <ion-select class="dropdown_Delivery" placeholder="Select" id="branchDropdown" [(ngModel)]="selectedBranch">
+                  <ion-select-option *ngFor="let branch of branches" [value]="branch">{{ branch }}</ion-select-option>
                 </ion-select>
 
-                <ion-button class="gbutton" type="submit">CONFIRM</ion-button>
+                <ion-button class="gbutton" type="submit" (click)="onSubmit()">CONFIRM</ion-button>
               </div>
             </ng-template>
           </ion-modal>
