@@ -1,0 +1,17 @@
+<ion-content [fullscreen]="true">
+  <div class="upper-container">
+    <ion-text class="header-text">YOU'RE ORDERING:</ion-text>
+    <div class="image-list" #productList></div>
+    <hr class="horizontal-line">
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <ion-button fill="clear" class="btn">CANCEL ORDER</ion-button>
+  </div>
+  <div class="white-rectangle">
+    <ion-text class="headerRectangle">TOTAL : $$$</ion-text>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <ion-button class="buttonG" type="submit">ADD TO CART</ion-button>
+      <ion-button class="buttonR" type="submit" routerLink="/payment-screen">FINISH ORDER AND <br> PROCEED TO PAYMENT</ion-button>
+    </div>
+  </div>
+</ion-content>

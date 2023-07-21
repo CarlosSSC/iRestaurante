@@ -20,19 +20,19 @@
              The Email or Password is incorrect.
           </div>
           <form [formGroup]="form" (ngSubmit)="submit()">
-          <h2><ion-icon name="person-outline"></ion-icon> Username</h2>
+          <h2 style="color: whitw;"><ion-icon name="person-outline"></ion-icon> Username</h2>
             <ion-item lines="none">
               <!-- <ion-label position="floating"></ion-label> -->
               <ion-input formControlName="email" type="text" style="color: black; text-align: center;"></ion-input>
             </ion-item>
-            <h2><ion-icon name="lock-closed-outline"></ion-icon> Password</h2>
+            <h2 style="color: white;"><ion-icon name="lock-closed-outline"></ion-icon> Password</h2>
             <ion-item lines="none">
               <!-- <ion-label position="floating"></ion-label> -->
               <ion-input formControlName="password" type="password" style="color: black; text-align: center;"></ion-input>
             </ion-item>
-            <ion-button  class="gbutton" type="submit">Login</ion-button>
+            <ion-button  class="gbutton" type="submit">LOGIN</ion-button>
             <div class="signup-link">
-              <p>Don't have an account? <br> Sign up <ion-button size="small" class="clearButton" fill="clear" routerLink="/signup"> here</ion-button></p>
+              <p style="color: white;">Don't have an account? <br> Sign up <ion-button size="small" class="clearButton" fill="clear" routerLink="/signup"> here</ion-button></p>
             </div>
           </form>
         </div>

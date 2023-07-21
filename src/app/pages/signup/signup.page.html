@@ -1,7 +1,6 @@
 <ion-header>
 </ion-header>
 
-<!-- scrollY="false" to stop scrolling -->
 <ion-content>
 
   <ion-grid class="ion-padding">
@@ -14,25 +13,42 @@
 
           <h2><ion-icon name="person-outline"></ion-icon>Your name</h2>
           <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="name">
+              <div class="input-wrapper">
+                <h2>First name*</h2>
+                <ion-item lines="none">
+                  <ion-input formControlName="firstName" type="text" style="color: black; text-align: center;"></ion-input>
+                </ion-item>
+              </div>
+            
+              <div class="input-wrapper">
+                <h2>Last name*</h2>
+                <ion-item lines="none">
+                  <ion-input type="text" style="color: black; text-align: center;"></ion-input>
+                </ion-item>
+              </div>
+            </div>
+
+            <h2>Email*</h2>
             <ion-item lines="none">
-              <!-- <ion-label position="floating"></ion-label> -->
-              <ion-input formControlName="firstName" type="text" style="color: black; text-align: center;"></ion-input>
-            </ion-item>
-            <h2><ion-icon name="mail-outline"></ion-icon> Email</h2>
-            <ion-item lines="none">
-              <!-- <ion-label position="floating"></ion-label> -->
               <ion-input formControlName="email" type="text" style="color: black; text-align: center;"></ion-input>
             </ion-item>
-            <h2><ion-icon name="lock-closed-outline"></ion-icon> Password</h2>
+
+            <h2>Phone number</h2>
             <ion-item lines="none">
-              <!-- <ion-label position="floating"></ion-label> -->
+              <ion-input type="number" style="color: black; text-align: center;"></ion-input>
+            </ion-item>
+
+            <h2>Password*</h2>
+            <ion-item lines="none">
               <ion-input formControlName="password" type="password" style="color: black; text-align: center;"></ion-input>
             </ion-item>
-            <h2><ion-icon name="lock-closed-outline"></ion-icon> Confirm Password</h2>
+
+            <h2>Confirm Password*</h2>
             <ion-item lines="none">
-              <!-- <ion-label position="floating"></ion-label> -->
               <ion-input formControlName="confirmPassword" type="password" style="color: black; text-align: center;"></ion-input>
             </ion-item>
+
             <ion-button class="gbutton" type="submit">CREATE ACCOUNT</ion-button>
             <div class="signup-link">
               <p>Already have an account? <br> Log in <ion-button class="clearButton" fill="clear" routerLink="/login"> here</ion-button></p>

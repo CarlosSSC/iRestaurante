@@ -1,21 +1,28 @@
-<ion-header class="toolbar-style" collapse="condense">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>iRestaurant</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header/>
+
 
 <ion-content [fullscreen]="true">
+  <ion-text class="header-item">WHAT ARE YOU CRAVING TODAY?</ion-text>
+
+  <div class="horizontal-buttons-container">
+    <div class="horizontal-buttons-inner">
+      <ion-button *ngFor="let button of buttons; let i = index" expand="full" fill="solid" class="horizontal-button"
+      [class.selected]="i === selectedButtonIndex" (click)="selectButton(i)">
+      {{ button.label }}
+      </ion-button>
+    </div>
+  </div>
+
+  <hr class="horizontal-line">
+
+  <ion-text class="header-item">THE MENU</ion-text>
   <ion-grid class="ion-padding">
     <ion-row justify-content-center>
-      <ion-col size="6" *ngFor="let row of [1, 2, 3, 4, 5, 6]; let firstItem = first;">
+      <ion-col size="6" *ngFor="let row of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; let firstItem = first;">
         <ion-row align-items-center class="row-style">
           <ion-col>
-            <ion-button expand="full" fill="solid" class="box-button" routerLink="/item-information">
-              <!-- <ion-button [expand]="firstItem ? 'full' : 'block'" fill="solid" class="box-button" [routerLink]="firstItem ? '/item-information' : null"> -->
-              <!-- Content for each button -->
+            <ion-button [expand]="firstItem ? 'full' : 'block'" fill="solid" class="box-button" [routerLink]="firstItem ? '/item-information' : null">
+              Content for each button
               Box {{ row }}
             </ion-button>
           </ion-col>
@@ -24,10 +31,8 @@
     </ion-row>
   </ion-grid>
 
-  <ion-row class="button-row ion-justify-content-center">
-    <ion-col size="12" size-md="10" size-lg="8">
-      <ion-button expand="full" fill="solid" class="view-order-button">View Order</ion-button>
-    </ion-col>
-  </ion-row>
-  
+  <div class="sticky-footer">
+    <ion-button expand="full" fill="solid" class="view-order-button" routerLink="/cart-screen">View Order</ion-button>
+  </div>
+
 </ion-content>

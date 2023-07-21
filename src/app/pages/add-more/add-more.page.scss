@@ -1,0 +1,68 @@
+ion-content {
+    --background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)); 
+    background-image: url(../../../assets/images/addMore.jpg);
+    background-repeat: no repeat;
+    background-position: center center;
+    background-size: cover;
+    }
+  
+  .no-scroll{
+    overflow: hidden;
+  }
+
+  .title-container{
+    text-align: center;
+    padding-bottom: 90px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: "inter-extraBold";
+    font-weight: bold;
+    font-size: 49px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+  }
+
+.ion-padding {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  height: 100vh; /* Set the height of ion-padding to the full viewport height */
+}
+
+.main-div{
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 2vh;
+}
+
+.buttonR{
+
+    --border-radius: 17px !important;
+    --background: #DA1300;
+    width: 219px;
+    height: 40px;   
+    --background-activated: #transparent;
+    font-weight: bold;
+  
+  }
+  
+  .buttonG{
+    margin-top: 30px;
+    margin-bottom: 18px;
+    --border-radius: 17px !important;
+    --background: #B1CC48;
+    width: 219px;
+    height: 40px;
+    --background-activated: #transparent;
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+  
+  }
+

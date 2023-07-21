@@ -31,7 +31,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/item-information/item-information.module').then( m => m.ItemInformationPageModule),
     canActivate: [AuthGuard]
   },
-
+  {
+    path: 'cart-screen',
+    loadChildren: () => import('./pages/cart-screen/cart-screen.module').then( m => m.CartScreenPageModule)
+  },
+  {
+    path: 'payment-screen',
+    loadChildren: () => import('./pages/payment-screen/payment-screen.module').then( m => m.PaymentScreenPageModule)
+  },
+  {
+    path: 'add-more',
+    loadChildren: () => import('./pages/add-more/add-more.module').then( m => m.AddMorePageModule)
+  },
 
 ];
 
