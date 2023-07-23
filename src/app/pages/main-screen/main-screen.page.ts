@@ -1,3 +1,4 @@
+import { BranchesService } from 'src/app/services/branches.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,10 +10,16 @@ import { Router } from '@angular/router';
 export class MainScreenPage implements OnInit {
   selectedBranch: string;
 
-  constructor(private router: Router,) { }
+  constructor(private router: Router) { 
+    const navigation = this.router.getCurrentNavigation()!;
+    if (navigation.extras.state) {
+      const dataString = navigation.extras.state['data'];
+      const data = JSON.parse(dataString);
+      this.selectedBranch = data.selectedBranch;
+    }
+  }
 
   ngOnInit() {
-    this.selectedBranch = this.router.getCurrentNavigation()!.extras.state?.['selectedBranch'] || 'No branch selected';
   }
 
 }

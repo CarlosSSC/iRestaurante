@@ -34,7 +34,7 @@
                   SELECT A RESTAURANT
                 </div>
                 <!--Normal option show up in frontend. Must be ts file fault-->
-                <ion-select class="dropdown_Delivery" placeholder="Select" id="branchDropdown" [(ngModel)]="selectedBranch">
+                <ion-select class="dropdown_Delivery" placeholder="Select" id="branchDropdown" (ionChange)="onSelectOption($event.target.value)">
                   <ion-select-option *ngFor="let branch of branches" [value]="branch">{{ branch }}</ion-select-option>
                 </ion-select>
 

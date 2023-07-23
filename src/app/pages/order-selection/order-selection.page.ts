@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { BranchesService } from 'src/app/services/branches.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -13,7 +14,8 @@ export class OrderSelectionPage implements OnInit {
   barcodedata: any;
   scannResult: string;
   selectedBranch: string;
-  constructor(private barcodeScanner: BarcodeScanner, private router: Router, private http: HttpClient) {}
+  constructor(private barcodeScanner: BarcodeScanner, private router: Router, 
+              private http: HttpClient, private branchesService: BranchesService) {}
 
   ngOnInit() {
     this.fetchBranches();
@@ -35,7 +37,7 @@ export class OrderSelectionPage implements OnInit {
 
   async fetchBranches() {
     try {//Fetching Branches but not showing up in frontend
-      const data = await this.http.get<string[]>('api/branches').toPromise();
+      const data = await this.branchesService.getBranches().toPromise();
       this.branches = data!;
       console.log('Branches:', this.branches);
     } catch (error) {
@@ -43,8 +45,15 @@ export class OrderSelectionPage implements OnInit {
     }
   }
 
+  onSelectOption(option: string) {
+    this.selectedBranch = option;
+  }
+
   onSubmit() {
-    this.router.navigate(['/main-screen', { state: { selectedBranch: this.selectedBranch } }]);
+    console.log('Selected Branch:', this.selectedBranch);
+    const data = { selectedBranch: this.selectedBranch };
+    const dataString = JSON.stringify(data);
+    this.router.navigate(['/main-screen'], { state: { data: dataString } });
   }
 
 }
