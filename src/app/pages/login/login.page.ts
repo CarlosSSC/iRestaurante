@@ -49,9 +49,10 @@ export class LoginPage implements OnInit {
       }
       )
     }
-    else console.log('Campos erróneos');
-    this.showError = true;
-
+    else {
+      console.log('Campos erróneos');
+      this.showError = true;
+    }
   }
 
   get errorControl() {
