@@ -44,6 +44,7 @@ export class LoginPage implements OnInit {
           this.router.navigate(['/order-selection'], {replaceUrl: true});
         },
         error: (error) => {
+          this.showError = true;
           throw new Error(error);
         }
       }
