@@ -1,0 +1,36 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <div class="image-container">
+    <ion-img src="assets/images/loginHeader.jpeg" alt="HeaderImg"></ion-img>
+  </div>
+  <h2>Invoice Configuration</h2>
+  <form #configForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">URL</ion-label>
+      <ion-input type="text" name="logoUrl" [(ngModel)]="logoUrl" (ngModelChange)="validateLogo()"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Footer Text</ion-label>
+      <ion-input type="text" name="bottomNotice" [(ngModel)]="bottomNotice"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="saveConfiguration()" class="gbutton">Save Configuration</ion-button>
+  </form>
+
+  <div class="results">
+    <h3>Logo:</h3>
+    <p>{{ logoUrl || 'Logo not selected' }}</p>
+    <div *ngIf="isValidImage">
+      <img [src]="logoUrl" alt="Logo" *ngIf="logoUrl && isValidImage" class="logo-sample"/>
+    </div>
+    <div *ngIf="!isValidImage && logoUrl">
+      <p>URL not functional</p>
+    </div>
+    
+    <h3>Bottom Notice: </h3>
+    <p>{{ bottomNotice || 'Menssage not written' }}</p>
+  </div>
+</ion-content>

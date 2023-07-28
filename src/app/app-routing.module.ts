@@ -31,7 +31,11 @@ const routes: Routes = [
     path: 'item-information',
     loadChildren: () => import('./pages/item-information/item-information.module').then( m => m.ItemInformationPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'invoice-configuration',
+    loadChildren: () => import('./pages/invoice-configuration/invoice-configuration.module').then( m => m.InvoiceConfigurationPageModule)
   },
+
 
 
 ];
