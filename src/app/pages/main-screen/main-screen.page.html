@@ -6,9 +6,10 @@
 
   <div class="horizontal-buttons-container">
     <div class="horizontal-buttons-inner">
-      <ion-button *ngFor="let button of buttons; let i = index" expand="full" fill="solid" class="horizontal-button"
-      [class.selected]="i === selectedButtonIndex" (click)="selectButton(i)">
-      {{ button.label }}
+      <ion-button *ngFor="let product of buttons; let i = index"
+        expand="full" fill="solid" class="horizontal-button"
+        [class.selected]="i === selectedButtonIndex" (click)="selectButton(i)">
+        {{ product.name }} <!-- Use the actual product name -->
       </ion-button>
     </div>
   </div>
@@ -18,13 +19,15 @@
   <ion-text class="header-item">THE MENU</ion-text>
   <ion-grid class="ion-padding">
     <ion-row justify-content-center>
-      <ion-col size="6" *ngFor="let row of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; let firstItem = first;">
+      <ion-col size="12" *ngFor="let row of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; let firstItem = first;">
         <ion-row align-items-center class="row-style">
           <ion-col>
-            <ion-button [expand]="firstItem ? 'full' : 'block'" fill="solid" class="box-button" [routerLink]="firstItem ? '/item-information' : null">
-              Content for each button
-              Box {{ row }}
-            </ion-button>
+            <div class="box-button-container">
+              <ion-button [expand]="firstItem ? 'full' : 'block'" fill="solid" class="box-button" [routerLink]="firstItem ? '/item-information' : null">
+                Content for each button
+                Box {{ row }}
+              </ion-button>
+            </div>
           </ion-col>
         </ion-row>
       </ion-col>

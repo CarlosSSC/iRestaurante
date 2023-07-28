@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../../services/products.service'; // Update the path to the ProductsService
 
 @Component({
   selector: 'app-main-screen',
@@ -6,22 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-screen.page.scss'],
 })
 export class MainScreenPage implements OnInit {
-  buttons = [
-    { label: 'Button 1', isSelected: false },
-    { label: 'Button 2', isSelected: false},
-    { label: 'Button 3', isSelected: false},
-    { label: 'Button 1', isSelected: false },
-    { label: 'Button 2', isSelected: false },
-    { label: 'Button 3', isSelected: false },
-    { label: 'Button 1', isSelected: false },
-    { label: 'Button 2', isSelected: false },
-    { label: 'Button 3', isSelected: false },
-    { label: 'Button 1', isSelected: false },
-    { label: 'Button 2', isSelected: false },
-    { label: 'Button 3', isSelected: false },
-  ];
+  buttons: any[] = []; // Array to store product data
 
   selectedButtonIndex: number | null = null;
+
+  constructor(private productService: ProductsService) {} // Inject the ProductsService
+
+  ngOnInit() {
+    // Call the function to fetch products when the component is initialized
+    this.fetchProducts();
+  }
+
+  fetchProducts() {
+    // Call the getAllProducts function of the ProductsService to fetch product data
+    this.productService.getAllProducts().subscribe(
+      (products) => {
+        console.log(products); // Log the products data in the browser console
+        // Assuming the API returns an array of products in the 'data' property
+        this.buttons = products;
+      },
+      (error) => {
+        console.error('Error fetching products:', error);
+      }
+    );
+  }
 
   selectButton(index: number) {
     if (this.selectedButtonIndex === index) {
@@ -30,10 +39,4 @@ export class MainScreenPage implements OnInit {
       this.selectedButtonIndex = index; // Highlight the button if it's not selected
     }
   }
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

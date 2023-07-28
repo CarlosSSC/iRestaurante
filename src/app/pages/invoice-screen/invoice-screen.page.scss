@@ -1,0 +1,93 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    .input-container {
+      width: 100%;
+      max-width: 400px; /* Set a maximum width for the input container */
+    }
+  
+    /* Center the placeholder text of inputs */
+    ion-item {
+      --background: white;
+      --color: black;
+      border-radius: 5px;
+      --padding-start: 10px;
+      --padding-end: 10px;
+      text-align: center; /* Center the text */
+      
+      
+      // Add a border to the inputs of text at the top
+      &:not(.table-row) {
+        border: 1px solid black;
+      }
+  
+      // Remove lines under the inputs of text
+      &.remove-lines-under {
+        --highlight-height: 0; // Set height to 0 to remove lines
+      }
+    }
+  
+    /* Remove the black line under the inputs of text */
+    ion-input {
+      background-color: white !important;
+      border: none;
+      text-align: center; /* Center the text inside the inputs of text */
+  
+      // Add class to remove border bottom for specific inputs
+      &.no-border-bottom {
+        border-bottom: none;
+      }
+    }
+  
+    .table-container {
+      margin-top: 20px;
+      border: 1px solid black; /* Add border to the table */
+  
+      .table-header {
+        ion-col {
+          border-bottom: 1px solid black; /* Add bottom border to the table header */
+        }
+      }
+  
+      ion-row {
+        border-bottom: 1px solid black;
+        &:first-child {
+          border-top: 1px solid black;
+        }
+      }
+  
+      ion-col {
+        padding: 5px;
+  
+        ion-input {
+          border: none; /* Remove border from inputs in the table */
+        }
+  
+        &:not(:last-child) {
+          border-right: 1px solid black; /* Add right border between columns */
+        }
+      }
+  
+      ion-col:last-child {
+        ion-input {
+          border-right: none; /* Remove the right border for the last cell in each row */
+        }
+      }
+    }
+  
+    .buttons-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 15px 0;
+      ion-button {
+        --background: white;
+        --color: black;
+      }
+    }
+  }
+  

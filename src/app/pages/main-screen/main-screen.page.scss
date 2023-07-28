@@ -54,7 +54,7 @@ ion-content {
   position: sticky;
   bottom: 0;
   z-index: 2; /* Ensure the button is above other content */
-  background-color: white; /* Adjust the background color as needed */
+  background-color: transparent; /* Adjust the background color as needed */
 }
 
 .view-order-button {
@@ -62,7 +62,7 @@ ion-content {
   --background: #60B8F9;
   border-radius: 15px;
   overflow: hidden;
-  height: 40px;
+  height: 60px;
 }
 
 .horizontal-line {
@@ -109,7 +109,12 @@ ion-content {
   }
 }
 
-
+.box-button-container {
+  border: 1px solid #D1D1D1; /* Gray border */
+  border-radius: 5px;
+  margin: 0 auto; /* Center the item horizontally */
+  padding: 10px; /* Add some padding for better appearance */
+}
 
 
 
