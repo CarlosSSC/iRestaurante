@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InvoiceService } from 'src/app/services/invoice.service';
 
 @Component({
   selector: 'app-invoice-screen',
@@ -25,7 +26,9 @@ export class InvoiceScreenPage {
   name: string = '';
   address: string = '';
 
-  constructor() {
+  constructor(
+    private invoiceService: InvoiceService
+  ) {
     // Call the updateCurrentDate function to set the initial value
     this.updateCurrentDate();
 
@@ -56,7 +59,7 @@ export class InvoiceScreenPage {
 
   submitTable() {
     // Display table content along with form data in the console
-    console.log({
+    const params = {
       currentDate: this.currentDate,
       invoiceNumber: this.invoiceNumber,
       issuer: this.issuer,
@@ -68,10 +71,33 @@ export class InvoiceScreenPage {
       name: this.name,
       address: this.address,
       concepts: this.tableRows
-    });
+    };
+    console.log(params);
+    this.invoiceService.generateXML(params).subscribe({
+      next: (result) => {
+        console.log(result);
+        this.downloadXML(result.xml)        
+      }
+    })
   }
 
   private updateCurrentDate() {
     this.currentDate = new Date().toISOString(); // Update the currentDate with the current date and time
   }
+
+  downloadXML(xml: any) {
+
+    var filename = `invoice_${this.invoiceNumber}.xml`;
+    var doc = document.createElement('a');
+    var blob = new Blob([xml], {type: 'text/plain'});
+  
+    doc.setAttribute('href', window.URL.createObjectURL(blob));
+    doc.setAttribute('download', filename);
+  
+    doc.dataset['downloadurl'] = ['text/plain', doc.download, doc.href].join(':');
+    doc.draggable = true; 
+    doc.classList.add('dragout');
+  
+    doc.click();
+    }
 }
