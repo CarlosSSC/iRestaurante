@@ -1,23 +1,19 @@
-<ion-header>
-</ion-header>
-
-<ion-content>
-  <div class="image-container">
-    <ion-img src="assets/images/loginHeader.jpeg" alt="HeaderImg"></ion-img>
-  </div>
-  <h2>Invoice Configuration</h2>
+<ion-col size="12" size-md="8" offset-md="2" size-lg="6" offset-lg="3">
+<ion-content class="form-container">
   <form #configForm="ngForm">
-    <ion-item>
+    <h2>Invoice Configuration</h2>
+    <ion-item class="input-container">
       <ion-label position="floating">URL</ion-label>
       <ion-input type="text" name="logoUrl" [(ngModel)]="logoUrl" (ngModelChange)="validateLogo()"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="input-container">
       <ion-label position="floating">Footer Text</ion-label>
       <ion-input type="text" name="bottomNotice" [(ngModel)]="bottomNotice"></ion-input>
     </ion-item>
-
-    <ion-button (click)="saveConfiguration()" class="gbutton">Save Configuration</ion-button>
+    <div class="buttons-container">
+      <ion-button (click)="saveConfiguration()" class="gbutton">Save Configuration</ion-button>
+    </div>
   </form>
 
   <div class="results">
@@ -34,3 +30,4 @@
     <p>{{ bottomNotice || 'Menssage not written' }}</p>
   </div>
 </ion-content>
+</ion-col>

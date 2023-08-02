@@ -1,49 +1,55 @@
-.logo-sample {
-    max-width: 200px; /* Cambia este valor al tamaño máximo deseado */
-    max-height: 200px; /* Cambia este valor al tamaño máximo deseado */
-    width: auto;
-    height: auto;
-}
+.form-container {
+  --background-color: #fff !important; 
+  display: flex;
+  height: 100vh;
 
-ion-content {
-    --background: #be7e1d;
-    
-}
-
-ion-img {
-    width: 100%;
-    height: 33vh;
-    object-fit: cover;
-  }
-  
-
-ion-col {
+  form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    width: 70%;
+
+    ion-item {
+      --padding-top: 8px;
+      --padding-bottom: 8px;
+
+      ion-label {
+        color: #000;
+      }
+
+      ion-input {
+        --min-height: 30px;
+        --padding-start: 10px;
+        --padding-end: 10px;
+        --border-radius: 5px;
+        --border-color: #000;
+        --placeholder-color: #888;
+      }
+    }
+
+    ion-button {
+      margin-top: 20px;
+      --border-radius: 5px;
+      --background: #fff;
+      --color: #000;
+    }
   }
 
-  
-  h2 {
+  .results {
+    margin-top: 20px;
     text-align: center;
-  }
-  
-  ion-item {
-    margin-bottom: 30px;
-    --border-radius: 10px;
-    --background: rgb(255, 255, 255);
-    color: rgb(165, 70, 6);
-    
-  }
-  
-  .gbutton {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    --border-radius: 60px !important;
-    --background: rgba(243, 151, 89, 0.82);
-    width: 50%;
-    font-size: 15px;
-    vertical-align: middle;
-    --background-activated: #transparent;
+    align-items: center;
+    width: 70%;
+    p {
+      color: #000;
+      margin: 8px 0;
+    }
 
+    .logo-sample {
+      max-width: 300px; /* Cambia este valor al tamaño máximo deseado */
+      max-height: 300px; /* Cambia este valor al tamaño máximo deseado */
+      width: auto;
+      height: auto;
+    }  
   }
+}
