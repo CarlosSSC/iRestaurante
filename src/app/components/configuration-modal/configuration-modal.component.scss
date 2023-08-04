@@ -1,0 +1,23 @@
+.logo-sample {
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
+  
+  /* Estilo para centrar los elementos del modal */
+ion-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+ion-item {
+    margin-bottom: 20px;
+}
+
+ion-content {
+    max-width: 90%;
+    height: auto;
+}

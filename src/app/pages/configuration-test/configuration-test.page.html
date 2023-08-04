@@ -1,0 +1,19 @@
+<ion-content [fullscreen]="true">
+  <ion-button class="custom-button" id="open-Configuraton">Open Configuraton</ion-button>
+  <ion-button (click)="openModal()">Open Modal</ion-button>
+
+  <ion-modal id="modal_Restaurant" #modal trigger="open-Configuraton">
+    <ng-template>
+      <div class="wrapper">
+        <div class="title-modal">
+          Select the image and footer message 
+        </div>
+        <ion-item class="input-container">
+          <ion-label position="floating">URL</ion-label>
+          <ion-input type="text" name="logoUrl"></ion-input>
+        </ion-item>
+        <ion-button class="modalButton" type="submit">SCAN QR</ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
+</ion-content>
