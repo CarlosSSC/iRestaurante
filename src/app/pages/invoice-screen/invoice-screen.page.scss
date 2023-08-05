@@ -21,7 +21,7 @@
       
       // Add a border to the inputs of text at the top
       &:not(.table-row) {
-        border: 1px solid black;
+        border: 1px solid #D6EBF4;
       }
   
       // Remove lines under the inputs of text
@@ -89,5 +89,10 @@
         --color: black;
       }
     }
+  }
+
+  .upload_Button {
+  --color: rgb(0, 0, 0) !important;
+      
   }
   
