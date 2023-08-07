@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      INVOICE
+    <ion-title style="font-weight: bolder;">
+        INVOICE
     </ion-title>
-    <ion-button fill="clear" class="upload_Button" slot="end">KEY & CER</ion-button>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" class="upload_Button" slot="end">KEY / CER</ion-button>
+      <ion-button fill="clear" class="custom-button">
+        <img src="../../../assets/icons/gearIcon.png" class="gear-icon"><img>
+      </ion-button>    
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,10 +17,29 @@
     <div class="input-container">
 
       <!-- Top text fields -->
+      
       <ion-item lines="none" style="margin-bottom: 10px;">
-        <ion-input label="Date" readonly value="{{ currentDate }}"></ion-input>
+        <ion-input label="Date" readonly value="{{ selectedDate }}"></ion-input>
+        <ion-button fill="clear" size="large" class="upload_Button" id="open-Calendar" expand="block"><ion-icon name="calendar-outline"></ion-icon></ion-button>
+        <!-- <ion-datetime-button datetime="datetime" presentation="date" ></ion-datetime-button> -->
+        <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="selectedDate" presentation="date"></ion-datetime> -->
       </ion-item>
 
+      <ion-modal id="modal_Calendar" #modal trigger="open-Calendar">
+        <ng-template>
+            <div class="title-modal">
+              <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="selectedDate" presentation="date"></ion-datetime>
+            </div>
+        </ng-template>
+      </ion-modal>
+
+
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      
       <ion-item lines="none" style="margin-bottom: 10px;">
         <ion-input label="Invoice Number" placeholder="Invoice Number" [(ngModel)]="invoiceNumber"></ion-input>
       </ion-item>
@@ -63,7 +87,7 @@
 
     <!-- Buttons -->
     <div class="buttons-container">
-      <ion-button expand="full">Upload KEY & CER</ion-button>
+      <ion-button expand="full">Upload KEY / CER</ion-button>
       <ion-button expand="full" (click)="addItem()">Add Item</ion-button>
       <ion-button expand="full" (click)="submitTable()">Submit</ion-button>
     </div>

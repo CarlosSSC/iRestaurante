@@ -9,17 +9,16 @@
       max-width: 400px; /* Set a maximum width for the input container */
     }
   
-    /* Center the placeholder text of inputs */
     ion-item {
       --background: white;
       --color: black;
       border-radius: 5px;
       --padding-start: 10px;
       --padding-end: 10px;
-      text-align: center; /* Center the text */
+      text-align: center; 
       
       
-      // Add a border to the inputs of text at the top
+      // Add a border to the inputs of text
       &:not(.table-row) {
         border: 1px solid #D6EBF4;
       }
@@ -35,7 +34,7 @@
       background-color: white !important;
       border: none;
       text-align: center; /* Center the text inside the inputs of text */
-  
+      --highlight-color: inherit;
       // Add class to remove border bottom for specific inputs
       &.no-border-bottom {
         border-bottom: none;
@@ -44,13 +43,6 @@
   
     .table-container {
       margin-top: 20px;
-      border: 1px solid black; /* Add border to the table */
-  
-      .table-header {
-        ion-col {
-          border-bottom: 1px solid black; /* Add bottom border to the table header */
-        }
-      }
   
       ion-row {
         border-bottom: 1px solid black;
@@ -71,11 +63,7 @@
         }
       }
   
-      ion-col:last-child {
-        ion-input {
-          border-right: none; /* Remove the right border for the last cell in each row */
-        }
-      }
+
     }
   
     .buttons-container {
@@ -92,7 +80,31 @@
   }
 
   .upload_Button {
-  --color: rgb(0, 0, 0) !important;
-      
+    --color: rgb(0, 0, 0) !important;
+    font-weight: bolder;
+    padding-right: 10px;
   }
   
+  .gear-icon {
+    width: 35px; /* Adjust the width as needed */
+    height: 35px; /* Adjust the height as needed */
+    font-size: 32px; /* Adjust the font size as needed */
+
+  }
+
+  .custom-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px; /* Adjust the height as needed */
+    padding-right: 15px;
+  }
+
+  .title-modal {
+    margin: 20px 20px 0px 20px;
+    align-items: center;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto;
+}

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { InvoiceService } from 'src/app/services/invoice.service';
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-invoice-screen',
@@ -15,7 +17,7 @@ export class InvoiceScreenPage {
     rfc_issuer: string;
   }[] = [];
   
-  currentDate: string; // Add this variable to store the current date and time
+  selectedDate: string; // Add this variable to store the current date and time
   invoiceNumber: string = '';
   issuer: string = '';
   receiver: string = '';
@@ -27,15 +29,16 @@ export class InvoiceScreenPage {
   address: string = '';
 
   constructor(
-    private invoiceService: InvoiceService
+    private invoiceService: InvoiceService,
+    private modalController: ModalController // Add ModalController to the constructor
   ) {
-    // Call the updateCurrentDate function to set the initial value
-    this.updateCurrentDate();
+    // // Call the updateCurrentDate function to set the initial value
+    // this.updateCurrentDate();
 
-    // Update the currentDate every second using setInterval
-    setInterval(() => {
-      this.updateCurrentDate();
-    }, 1000);
+    // // Update the currentDate every second using setInterval
+    // setInterval(() => {
+    //   this.updateCurrentDate();
+    // }, 1000);
     
     // Initialize with an empty row
     this.tableRows.push({ 
@@ -46,6 +49,8 @@ export class InvoiceScreenPage {
       rfc_issuer: ''
     });
   }
+
+  
 
   addItem() {
     this.tableRows.push({ 
@@ -60,7 +65,7 @@ export class InvoiceScreenPage {
   submitTable() {
     // Display table content along with form data in the console
     const params = {
-      currentDate: this.currentDate,
+      date: this.selectedDate,
       invoiceNumber: this.invoiceNumber,
       issuer: this.issuer,
       receiver: this.receiver,
@@ -81,9 +86,9 @@ export class InvoiceScreenPage {
     })
   }
 
-  private updateCurrentDate() {
-    this.currentDate = new Date().toISOString(); // Update the currentDate with the current date and time
-  }
+  // private updateCurrentDate() {
+  //   this.currentDate = new Date().toISOString(); // Update the currentDate with the current date and time
+  // }
 
   downloadXML(xml: any) {
 
