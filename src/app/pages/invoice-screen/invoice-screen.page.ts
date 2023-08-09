@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { ModalController } from '@ionic/angular';
-
+import { ConfigurationModalComponent } from 'src/app/components/configuration-modal/configuration-modal.component';
 
 @Component({
   selector: 'app-invoice-screen',
@@ -104,5 +104,13 @@ export class InvoiceScreenPage {
     doc.classList.add('dragout');
   
     doc.click();
-    }
+  }
+  
+  async openConfigModal() {
+    const modal = await this.modalController.create({
+      component: ConfigurationModalComponent,
+      cssClass: 'configuration-modal-css',
+    });
+    await modal.present();
+  }
 }
