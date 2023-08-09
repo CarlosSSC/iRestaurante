@@ -8,92 +8,105 @@
 
 <ion-content class="ion-padding">
   <div class="form-container">
-    <div class="input-container">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="input-container">
+  
+        <!-- Top text fields -->
+        <ion-item lines="none" style="margin-bottom: 10px;">
+          <ion-input label="Date" readonly value="{{ currentDate }}" formControlName="currentDate"></ion-input>
+        </ion-item>
+  
+        <ion-item lines="none" style="margin-bottom: 10px;">
+          <ion-input label="Invoice Number" placeholder="Invoice Number" formControlName="invoiceNumber"></ion-input>
+        </ion-item>
+  
+        <ion-item lines="none" style="margin-bottom: 10px;">
+          <ion-input label="Issuer" placeholder="issuer" formControlName="issuer"></ion-input>
+        </ion-item>
+  
+        <ion-item lines="none" style="margin-bottom: 10px;">
+          <ion-input label="Receiver" placeholder="receiver" formControlName="receiver"></ion-input>
+        </ion-item>
+  
+        <!-- Updated RFC inputs -->
+        <ion-item lines="none" style="margin-bottom: 10px;">
+          <ion-input label="RFC Receiver" placeholder="rfc receiver" formControlName="rfcReceiver"></ion-input>
+        </ion-item>
+  
+        <ion-item lines="none" style="margin-bottom: 10px;">
+          <ion-input label="RFC Issuer" placeholder="rfc issuer" formControlName="rfcIssuer"></ion-input>
+        </ion-item>
+        
+        <ion-item lines="none" style="margin-bottom: 10px;">
+          <ion-input label="cfdiUse" placeholder="cfdiUse" formControlName="cfdiUse"></ion-input>
+        </ion-item>
+  
+        <ion-item lines="none" style="margin-bottom: 10px;">
+          <ion-input label="Tax Regimen" placeholder="taxRegimen" formControlName="taxRegimen"></ion-input>
+        </ion-item>
+  
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <ion-item lines="none">
+                <ion-input placeholder="name" formControlName="name"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item lines="none">
+                <ion-input placeholder="address" formControlName="address"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+  
+      <!-- Buttons -->
+      <div class="buttons-container">
+        <ion-button expand="full">
+          <ion-label slot="start">.cer</ion-label>
+          <input type="file" (change)="selectCerFile($event)" accept=".cer">
+        </ion-button>
+        <ion-button expand="full">
+          <ion-label slot="start">.key</ion-label>
+          <input type="file" (change)="selectKeyFile($event)" accept=".key">
+        </ion-button>
+      </div>
+      <div class="buttons-container">
+        <ion-button expand="full" (click)="addObjectToFormArray()">Add Item</ion-button>
+        <ion-button expand="full" (click)="submit()">Submit</ion-button>
 
-      <!-- Top text fields -->
-      <ion-item lines="none" style="margin-bottom: 10px;">
-        <ion-input label="Date" readonly value="{{ currentDate }}"></ion-input>
-      </ion-item>
+      </div>
+      <!-- Table -->
+      <div class="table-container" formArrayName="concepts">
+        <ion-grid>
+          <ion-row class="table-header">
+            <ion-col>
+              <ion-label>Quantity</ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-label>Description</ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-label>Price</ion-label>
+            </ion-col>
+          </ion-row>
+  
+          <ion-row *ngFor="let row of concepts.controls; let i = index" [formGroupName]="i">
+              <ion-col>
+                <ion-input type="number" formControlName="quantity"></ion-input>
+              </ion-col>
+              <ion-col>
+                <ion-input type="text" formControlName="description"></ion-input>
+              </ion-col>
+              <ion-col>
+                <ion-input type="number" formControlName="price"></ion-input>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
 
-      <ion-item lines="none" style="margin-bottom: 10px;">
-        <ion-input label="Invoice Number" placeholder="Invoice Number" [(ngModel)]="invoiceNumber"></ion-input>
-      </ion-item>
+    </form>
 
-      <ion-item lines="none" style="margin-bottom: 10px;">
-        <ion-input label="Issuer" placeholder="issuer" [(ngModel)]="issuer"></ion-input>
-      </ion-item>
-
-      <ion-item lines="none" style="margin-bottom: 10px;">
-        <ion-input label="Receiver" placeholder="receiver" [(ngModel)]="receiver"></ion-input>
-      </ion-item>
-
-      <!-- Updated RFC inputs -->
-      <ion-item lines="none" style="margin-bottom: 10px;">
-        <ion-input label="RFC Receiver" placeholder="rfc receiver" [(ngModel)]="rfc_receiver"></ion-input>
-      </ion-item>
-
-      <ion-item lines="none" style="margin-bottom: 10px;">
-        <ion-input label="RFC Issuer" placeholder="rfc issuer" [(ngModel)]="rfc_issuer"></ion-input>
-      </ion-item>
-      
-      <ion-item lines="none" style="margin-bottom: 10px;">
-        <ion-input label="cfdiUse" placeholder="cfdiUse" [(ngModel)]="cfdiUse"></ion-input>
-      </ion-item>
-
-      <ion-item lines="none" style="margin-bottom: 10px;">
-        <ion-input label="Tax Regimen" placeholder="taxRegimen" [(ngModel)]="taxRegimen"></ion-input>
-      </ion-item>
-
-      <ion-grid>
-        <ion-row>
-          <ion-col size="6">
-            <ion-item lines="none">
-              <ion-input placeholder="name" [(ngModel)]="name"></ion-input>
-            </ion-item>
-          </ion-col>
-          <ion-col size="6">
-            <ion-item lines="none">
-              <ion-input placeholder="address" [(ngModel)]="address"></ion-input>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-
-    <!-- Buttons -->
-    <div class="buttons-container">
-      <ion-button expand="full">Upload KEY & CER</ion-button>
-      <ion-button expand="full" (click)="addItem()">Add Item</ion-button>
-      <ion-button expand="full" (click)="submitTable()">Submit</ion-button>
-    </div>
-
-    <!-- Table -->
-    <div class="table-container">
-      <ion-grid>
-        <ion-row class="table-header">
-          <ion-col>
-            <ion-label>Quantity</ion-label>
-          </ion-col>
-          <ion-col>
-            <ion-label>Description</ion-label>
-          </ion-col>
-          <ion-col>
-            <ion-label>Price</ion-label>
-          </ion-col>
-        </ion-row>
-
-        <ion-row *ngFor="let row of tableRows">
-          <ion-col>
-            <ion-input type="number" [(ngModel)]="row.quantity"></ion-input>
-          </ion-col>
-          <ion-col>
-            <ion-input type="text" [(ngModel)]="row.description"></ion-input>
-          </ion-col>
-          <ion-col>
-            <ion-input type="number" [(ngModel)]="row.price"></ion-input>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
   </div>
 </ion-content>

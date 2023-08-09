@@ -1,33 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from 'src/app/services/invoice.service';
+import { FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-invoice-screen',
   templateUrl: 'invoice-screen.page.html',
   styleUrls: ['invoice-screen.page.scss'],
 })
-export class InvoiceScreenPage {
-  tableRows: { 
-    quantity: number; 
-    description: string; 
-    price: number;
-    rfc_receiver: string;
-    rfc_issuer: string;
-  }[] = [];
+export class InvoiceScreenPage implements OnInit {
   
   currentDate: string; // Add this variable to store the current date and time
-  invoiceNumber: string = '';
-  issuer: string = '';
-  receiver: string = '';
-  rfc_receiver: string = '';
-  rfc_issuer: string = '';
-  cfdiUse: string = '';
-  taxRegimen: string = '';
-  name: string = '';
-  address: string = '';
+  cerFile: any;
+  keyFile: any;
+
+  form: any;
 
   constructor(
-    private invoiceService: InvoiceService
+    private invoiceService: InvoiceService,
+    private formBuilder: FormBuilder
   ) {
     // Call the updateCurrentDate function to set the initial value
     this.updateCurrentDate();
@@ -36,49 +26,62 @@ export class InvoiceScreenPage {
     setInterval(() => {
       this.updateCurrentDate();
     }, 1000);
-    
-    // Initialize with an empty row
-    this.tableRows.push({ 
-      quantity: 0, 
-      description: '', 
-      price: 0, 
-      rfc_receiver: '',
-      rfc_issuer: ''
-    });
   }
 
-  addItem() {
-    this.tableRows.push({ 
-      quantity: 0, 
-      description: '', 
-      price: 0, 
-      rfc_receiver: this.rfc_receiver,
-      rfc_issuer: this.rfc_issuer
-    });
-  }
-
-  submitTable() {
-    // Display table content along with form data in the console
-    const params = {
-      currentDate: this.currentDate,
-      invoiceNumber: this.invoiceNumber,
-      issuer: this.issuer,
-      receiver: this.receiver,
-      rfc_receiver: this.rfc_receiver,
-      rfc_issuer: this.rfc_issuer,
-      cfdiUse: this.cfdiUse,
-      taxRegimen: this.taxRegimen,
-      name: this.name,
-      address: this.address,
-      concepts: this.tableRows
-    };
-    console.log(params);
-    this.invoiceService.generateXML(params).subscribe({
-      next: (result) => {
-        console.log(result);
-        this.downloadXML(result.xml)        
-      }
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      currentDate: [''],
+      invoiceNumber: ['', [Validators.required]],
+      issuer: ['', [Validators.required]],
+      receiver: ['', [Validators.required]],
+      rfcReceiver: ['', [Validators.required]],
+      rfcIssuer: ['', [Validators.required]],
+      cfdiUse: ['', [Validators.required]],
+      taxRegimen: ['', [Validators.required]],
+      name: ['', []],
+      address: ['', []],
+      concepts: this.formBuilder.array([]),
+      cerFile: ['', [Validators.required]],
+      keyFile: [Validators.required]
     })
+  }
+
+  // Convenience getter for the FormArray
+  get concepts() {
+    return this.form.controls.concepts as FormArray;
+  }
+
+  // Add an object to the FormArray
+  addObjectToFormArray() {
+    const newObjectFormGroup = this.formBuilder.group({
+      quantity: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', Validators.required]
+    });
+    this.concepts.push(newObjectFormGroup);
+  }
+
+  submit() {
+
+    const formData = new FormData();
+    formData.append("invoiceNumber", this.form.value['invoiceNumber']);
+    formData.append("issuer", this.form.value['issuer']);
+    formData.append("receiver", this.form.value['receiver']);
+    formData.append("rfcReceiver", this.form.value['rfcReceiver']);
+    formData.append("rfcIssuer", this.form.value['rfcIssuer']);
+    formData.append("cfdiUse", this.form.value['cfdiUse']);
+    formData.append("taxRegimen", this.form.value['taxRegimen']);
+    formData.append("name", this.form.value['name']);
+    formData.append("adress", this.form.value['adress']);
+    formData.append("concepts", JSON.stringify({ concepts: this.form.value['concepts']}));
+    formData.append("cerFile", this.cerFile);
+    formData.append("keyFile", this.keyFile);
+    formData.append("currentDate", this.currentDate);
+
+    this.invoiceService.generateXML(formData).subscribe(response => {
+      this.downloadXML(response.xml);
+    })
+    // Display table content along with form data in the console
   }
 
   private updateCurrentDate() {
@@ -87,7 +90,7 @@ export class InvoiceScreenPage {
 
   downloadXML(xml: any) {
 
-    var filename = `invoice_${this.invoiceNumber}.xml`;
+    var filename = `invoice_${this.form.value.invoiceNumber}.xml`;
     var doc = document.createElement('a');
     var blob = new Blob([xml], {type: 'text/plain'});
   
@@ -99,5 +102,19 @@ export class InvoiceScreenPage {
     doc.classList.add('dragout');
   
     doc.click();
+  }
+
+  selectCerFile(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.cerFile = file;
     }
+  }
+
+  selectKeyFile(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.keyFile = file;
+    }
+  }
 }
