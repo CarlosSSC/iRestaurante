@@ -15,4 +15,8 @@ export class InvoiceService extends BaseService {
   generateXML(params: any) {
     return this.http.post<any>(`${this.baseURL}invoices/generate_xml`, params)
   }
+
+  generatePDF(params: any) {
+    return this.http.post<any>(`${this.baseURL}invoices/generate_pdf`, params)
+  }
 }

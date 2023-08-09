@@ -8,7 +8,7 @@
 
 <ion-content class="ion-padding">
   <div class="form-container">
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form" (ngSubmit)="generateXML()">
       <div class="input-container">
   
         <!-- Top text fields -->
@@ -74,7 +74,8 @@
       </div>
       <div class="buttons-container">
         <ion-button expand="full" (click)="addObjectToFormArray()">Add Item</ion-button>
-        <ion-button expand="full" (click)="submit()">Submit</ion-button>
+        <ion-button expand="full" (click)="generateXML()">Generar XML</ion-button>
+        <ion-button expand="full" (click)="generatePDF()">Generar PDF</ion-button>
 
       </div>
       <!-- Table -->
