@@ -85,6 +85,23 @@
         </ion-row>
       </ion-grid>
     </div>
+    
+    <ion-item lines="none" style="margin-bottom: 10px;">
+      <ion-input label="Logo's URL" placeholder="logoUrl" [(ngModel)]="logoUrl" (ionChange)="validateLogo()"></ion-input>
+    </ion-item>
+
+    <div *ngIf="isValidImage">
+      <img [src]="logoUrl" alt="Logo" *ngIf="logoUrl && isValidImage" class="logo-sample"/>
+    </div>
+    <div *ngIf="!isValidImage && logoUrl">
+      <p>URL not functional</p>
+    </div>
+
+    <ion-item lines="none" style="margin-bottom: 10px;">
+      <ion-input label="Footer Message" placeholder="bottomNotice" [(ngModel)]="bottomNotice"></ion-input>
+    </ion-item>
+    
+    <p>{{ bottomNotice || 'Menssage not written' }}</p>
 
     <!-- Buttons -->
     <div class="buttons-container">
