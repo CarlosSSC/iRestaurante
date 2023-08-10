@@ -14,9 +14,27 @@ export class InvoiceService extends BaseService {
 
   generateXML(params: any) {
     return this.http.post<any>(`${this.baseURL}invoices/generate_xml`, params)
+    .pipe(map(
+      response => {
+        if (response?.success) {
+          return response.message
+        } else {
+          throw new Error(response.error)
+        }
+      }
+    ));
   }
 
   generatePDF(params: any) {
     return this.http.post<any>(`${this.baseURL}invoices/generate_pdf`, params)
+    .pipe(map(
+      response => {
+        if (response?.success) {
+          return response.message
+        } else {
+          throw new Error(response.error)
+        }
+      }
+    ));
   }
 }

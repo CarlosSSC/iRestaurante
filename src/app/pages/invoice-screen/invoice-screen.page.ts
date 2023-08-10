@@ -80,7 +80,7 @@ export class InvoiceScreenPage implements OnInit {
       formData.append("currentDate", this.currentDate);
   
       this.invoiceService.generateXML(formData).subscribe(response => {
-        this.downloadXML(response.xml);
+        this.downloadXML(response);
       })
     } else {
       console.log('Faltan campos del formulario',this.form.controls);
@@ -126,7 +126,7 @@ export class InvoiceScreenPage implements OnInit {
     if (this.form.valid) {
       this.form.value.currentDate = this.currentDate;
       this.invoiceService.generatePDF(this.form.value).subscribe(response => {
-        this.saveAndOpenPdf(response.message.pdf)
+        this.saveAndOpenPdf(response.pdf)
       })
     }
     else {
