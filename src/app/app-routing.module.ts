@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'invoice-screen',
     loadChildren: () => import('./pages/invoice-screen/invoice-screen.module').then( m => m.InvoiceScreenPageModule)
   },
+  {
+    path: 'invoice-configuration',
+    loadChildren: () => import('./pages/invoice-configuration/invoice-configuration.module').then( m => m.InvoiceConfigurationPageModule)
+  },
 
 
 ];
