@@ -1,113 +1,197 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Angular/Ionic Forms
+  <ion-toolbar class="toolbar-gray">
+    <ion-title style="font-weight: bolder; font-size: 30px">
+      INVOICE
     </ion-title>
+    <ion-buttons slot="end">
+      <!--<ion-button
+        fill="clear"
+        style="font-size: 20px; font-weight: bolder"
+        class="upload_Button"
+        slot="end"
+        >KEY / CER</ion-button
+      >-->
+      <ion-button fill="clear" class="custom-button">
+        <img
+          src="../../../assets/icons/gearIcon.png"
+          class="gear-icon"
+        /><img />
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="form-container">
-    <form [formGroup]="form" (ngSubmit)="generateXML()">
-      <div class="input-container">
-  
-        <!-- Top text fields -->
-        <ion-item lines="none" style="margin-bottom: 10px;">
-          <ion-input label="Date" readonly value="{{ currentDate }}" formControlName="currentDate"></ion-input>
-        </ion-item>
-  
-        <ion-item lines="none" style="margin-bottom: 10px;">
-          <ion-input label="Invoice Number" placeholder="Invoice Number" formControlName="invoiceNumber"></ion-input>
-        </ion-item>
-  
-        <ion-item lines="none" style="margin-bottom: 10px;">
-          <ion-input label="Issuer" placeholder="issuer" formControlName="issuer"></ion-input>
-        </ion-item>
-  
-        <ion-item lines="none" style="margin-bottom: 10px;">
-          <ion-input label="Receiver" placeholder="receiver" formControlName="receiver"></ion-input>
-        </ion-item>
-  
-        <!-- Updated RFC inputs -->
-        <ion-item lines="none" style="margin-bottom: 10px;">
-          <ion-input label="RFC Receiver" placeholder="rfc receiver" formControlName="rfcReceiver"></ion-input>
-        </ion-item>
-  
-        <ion-item lines="none" style="margin-bottom: 10px;">
-          <ion-input label="RFC Issuer" placeholder="rfc issuer" formControlName="rfcIssuer"></ion-input>
-        </ion-item>
+  <div class="container">
+    <div class="form-container">
+      <form [formGroup]="form" (ngSubmit)="generateXML()">
+
+        <div class="input-container">
+          <!-- Top text fields -->
+
+          <ion-item lines="none" style="margin-bottom: 10px">
+            <ion-input
+              label="Date"
+              readonly
+              value="{{ form.value.currentDate }}"
+            ></ion-input>
+            <ion-button
+              fill="clear"
+              size="large"
+              class="upload_Button"
+              id="open-Calendar"
+              expand="block"
+              ><ion-icon name="calendar-outline"></ion-icon
+            ></ion-button>
+            <!-- <ion-datetime-button datetime="datetime" presentation="date" ></ion-datetime-button> -->
+            <!-- <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="selectedDate" presentation="date"></ion-datetime> -->
+          </ion-item>
+
+          <ion-modal id="modal_Calendar" #modal trigger="open-Calendar">
+            <ng-template>
+              <div class="title-modal">
+                <ion-datetime
+                  displayFormat="DD/MM/YYYY"
+                  formControlName="currentDate"
+                  presentation="date"
+                ></ion-datetime>
+              </div>
+            </ng-template>
+          </ion-modal>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime id="datetime"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+
+          <ion-item lines="none" style="margin-bottom: 10px">
+            <ion-input
+              label="Invoice Number"
+              placeholder="Invoice Number"
+              formControlName="invoiceNumber"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" style="margin-bottom: 10px">
+            <ion-input
+              label="Issuer"
+              placeholder="issuer"
+              formControlName="issuer"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" style="margin-bottom: 10px">
+            <ion-input
+              label="RFC Issuer"
+              placeholder="rfc issuer"
+              formControlName="rfcIssuer"
+            ></ion-input>
+          </ion-item>
+          
+          <ion-item lines="none" style="margin-bottom: 10px">
+            <ion-input
+              label="Receiver"
+              placeholder="receiver"
+              formControlName="receiver"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" style="margin-bottom: 10px">
+            <ion-input
+              label="RFC Receiver"
+              placeholder="rfc receiver"
+              formControlName="rfcReceiver"
+            ></ion-input>
+          </ion-item>
+
+
+          <ion-item lines="none" style="margin-bottom: 10px">
+            <ion-input
+              label="cfdiUse"
+              placeholder="cfdiUse"
+              formControlName="cfdiUse"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item lines="none" style="margin-bottom: 10px">
+            <ion-input
+              label="Tax Regimen"
+              placeholder="taxRegimen"
+              formControlName="taxRegimen"
+            ></ion-input>
+          </ion-item>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+                <ion-item lines="none">
+                  <ion-input placeholder="name" formControlName="name"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item lines="none">
+                  <ion-input
+                    placeholder="address"
+                    formControlName="address"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
         
-        <ion-item lines="none" style="margin-bottom: 10px;">
-          <ion-input label="cfdiUse" placeholder="cfdiUse" formControlName="cfdiUse"></ion-input>
-        </ion-item>
-  
-        <ion-item lines="none" style="margin-bottom: 10px;">
-          <ion-input label="Tax Regimen" placeholder="taxRegimen" formControlName="taxRegimen"></ion-input>
-        </ion-item>
-  
-        <ion-grid>
-          <ion-row>
-            <ion-col size="6">
-              <ion-item lines="none">
-                <ion-input placeholder="name" formControlName="name"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col size="6">
-              <ion-item lines="none">
-                <ion-input placeholder="address" formControlName="address"></ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-  
-      <!-- Buttons -->
-      <div class="buttons-container">
-        <ion-button expand="full">
-          <ion-label slot="start">.cer</ion-label>
-          <input type="file" (change)="selectCerFile($event)" accept=".cer">
-        </ion-button>
-        <ion-button expand="full">
-          <ion-label slot="start">.key</ion-label>
-          <input type="file" (change)="selectKeyFile($event)" accept=".key">
-        </ion-button>
-      </div>
-      <div class="buttons-container">
-        <ion-button expand="full" (click)="addObjectToFormArray()">Add Item</ion-button>
-        <ion-button expand="full" (click)="generateXML()">Generar XML</ion-button>
-        <ion-button expand="full" (click)="generatePDF()">Generar PDF</ion-button>
-
-      </div>
-      <!-- Table -->
-      <div class="table-container" formArrayName="concepts">
-        <ion-grid>
-          <ion-row class="table-header">
-            <ion-col>
-              <ion-label>Quantity</ion-label>
-            </ion-col>
-            <ion-col>
-              <ion-label>Description</ion-label>
-            </ion-col>
-            <ion-col>
-              <ion-label>Price</ion-label>
-            </ion-col>
-          </ion-row>
-  
-          <ion-row *ngFor="let row of concepts.controls; let i = index" [formGroupName]="i">
-              <ion-col>
-                <ion-input type="number" formControlName="quantity"></ion-input>
-              </ion-col>
-              <ion-col>
-                <ion-input type="text" formControlName="description"></ion-input>
-              </ion-col>
-              <ion-col>
-                <ion-input type="number" formControlName="price"></ion-input>
-              </ion-col>
-          </ion-row>
-        </ion-grid>
-      </div>
-
-    </form>
-
+        <!-- Buttons -->
+        <div class="buttons-container">
+          <ion-button expand="full">
+            <ion-label slot="start">.cer</ion-label>
+            <input type="file" (change)="selectCerFile($event)" accept=".cer">
+          </ion-button>
+          <ion-button expand="full">
+            <ion-label slot="start">.key</ion-label>
+            <input type="file" (change)="selectKeyFile($event)" accept=".key">
+          </ion-button>
+        </div>
+        <div class="buttons-container">
+          <ion-button expand="full" (click)="addObjectToFormArray()">Add Item</ion-button>
+          <ion-button expand="full" (click)="generateXML()">Generar XML</ion-button>
+          <ion-button expand="full" (click)="generatePDF()">Generar PDF</ion-button>
+          
+        </div>
+        <!-- Table -->
+        <div class="table-container" formArrayName="concepts">
+          <div class="table-wrapper">
+            <ion-grid>
+              <ion-row class="table-header">
+                <ion-col>
+                  <ion-label>Quantity</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-label>Description</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-label>Price</ion-label>
+                </ion-col>
+              </ion-row>
+              
+              <ion-row *ngFor="let row of concepts.controls; let i = index" [formGroupName]="i">
+                <ion-col>
+                  <ion-input type="number" formControlName="quantity"></ion-input>
+                </ion-col>
+                <ion-col>
+                  <ion-input type="text" formControlName="description"></ion-input>
+                </ion-col>
+                <ion-col>
+                  <ion-input type="number" formControlName="price"></ion-input>
+                  <ion-button fill="clear" color="black" (click)="deleteItem(i)">
+                    <ion-icon name="trash-outline" style="color: black"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </ion-content>

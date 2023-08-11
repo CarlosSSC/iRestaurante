@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-invoice-screen',
@@ -17,20 +18,21 @@ export class InvoiceScreenPage implements OnInit {
 
   constructor(
     private invoiceService: InvoiceService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private modalController: ModalController // Add ModalController to the constructor
   ) {
-    // Call the updateCurrentDate function to set the initial value
-    this.updateCurrentDate();
+    // // Call the updateCurrentDate function to set the initial value
+    // this.updateCurrentDate();
 
     // Update the currentDate every second using setInterval
-    setInterval(() => {
+    /*setInterval(() => {
       this.updateCurrentDate();
-    }, 1000);
+    }, 1000);*/
   }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      currentDate: [''],
+      currentDate: ['', Validators.required],
       invoiceNumber: ['', [Validators.required]],
       issuer: ['', [Validators.required]],
       receiver: ['', [Validators.required]],
@@ -59,6 +61,9 @@ export class InvoiceScreenPage implements OnInit {
       price: ['', Validators.required]
     });
     this.concepts.push(newObjectFormGroup);
+    console.log(this.form.value)
+    const x = this.form.value.currentDate.split('T')[0]
+    console.log(new Date(x).toISOString());
   }
 
   generateXML() {
@@ -77,7 +82,9 @@ export class InvoiceScreenPage implements OnInit {
       formData.append("concepts", JSON.stringify({ concepts: this.form.value['concepts']}));
       formData.append("cerFile", this.cerFile);
       formData.append("keyFile", this.keyFile);
-      formData.append("currentDate", this.currentDate);
+      const dateInput = this.form.value.currentDate.split('T')[0]
+      const date = new Date(dateInput).toISOString();
+      formData.append("currentDate", date);
   
       this.invoiceService.generateXML(formData).subscribe(response => {
         this.downloadXML(response);
@@ -88,23 +95,29 @@ export class InvoiceScreenPage implements OnInit {
 
   }
 
-  private updateCurrentDate() {
+  /*private updateCurrentDate() {
     this.currentDate = new Date().toISOString(); // Update the currentDate with the current date and time
+  }*/
+
+  deleteItem(index: number) {
+    this.form.value.concepts.splice(index, 1);
   }
 
   downloadXML(xml: any) {
 
     var filename = `invoice_${this.form.value.invoiceNumber}.xml`;
     var doc = document.createElement('a');
-    var blob = new Blob([xml], {type: 'text/plain'});
-  
+    var blob = new Blob([xml], { type: 'text/plain' });
+
     doc.setAttribute('href', window.URL.createObjectURL(blob));
     doc.setAttribute('download', filename);
-  
-    doc.dataset['downloadurl'] = ['text/plain', doc.download, doc.href].join(':');
-    doc.draggable = true; 
+
+    doc.dataset['downloadurl'] = ['text/plain', doc.download, doc.href].join(
+      ':'
+    );
+    doc.draggable = true;
     doc.classList.add('dragout');
-  
+
     doc.click();
   }
 
@@ -124,7 +137,9 @@ export class InvoiceScreenPage implements OnInit {
 
   generatePDF() {
     if (this.form.valid) {
-      this.form.value.currentDate = this.currentDate;
+      const dateInput = this.form.value.currentDate.split('T')[0]
+      const date = new Date(dateInput).toISOString();
+      this.form.value.currentDate = date;
       this.invoiceService.generatePDF(this.form.value).subscribe(response => {
         this.saveAndOpenPdf(response.pdf)
       })

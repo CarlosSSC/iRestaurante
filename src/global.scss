@@ -25,6 +25,28 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+ion-modal{
+    --background: transparent;
+    --width: 400px;
+    --height: 400px;
+
+    &::part(content){
+        backdrop-filter: blur(6px);
+    }
+
+    ion-content{
+      --background: transparent;
+      --padding-top: 25vh;
+      --padding-start: 20vh;
+      --padding-end: 20vh;
+
+    }
+
+    ion-datetime{
+        border-radius: 8px;
+    }
+}
+
 @font-face {
     font-family: 'inter';
     font-style: normal;
