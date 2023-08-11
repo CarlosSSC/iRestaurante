@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-invoice-screen',
@@ -19,6 +20,7 @@ export class InvoiceScreenPage implements OnInit {
   constructor(
     private invoiceService: InvoiceService,
     private formBuilder: FormBuilder,
+    private storageService: StorageService,
     private modalController: ModalController // Add ModalController to the constructor
   ) {
     // // Call the updateCurrentDate function to set the initial value
@@ -135,11 +137,16 @@ export class InvoiceScreenPage implements OnInit {
     }
   }
 
-  generatePDF() {
+  async generatePDF() {
     if (this.form.valid) {
       const dateInput = this.form.value.currentDate.split('T')[0]
       const date = new Date(dateInput).toISOString();
       this.form.value.currentDate = date;
+      const settings = await this.storageService.get('settings')
+      if (settings) {
+        this.form.value.settings = settings
+      }
+      console.log(this.form.value)
       this.invoiceService.generatePDF(this.form.value).subscribe(response => {
         this.saveAndOpenPdf(response.pdf)
       })

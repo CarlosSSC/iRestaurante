@@ -6,7 +6,7 @@
         style="font-size: 20px; font-weight: bolder"
         class="back_Button"
         slot="start"
-        routerLink="/invoice-screen"
+        (click)="back()"
         >Back</ion-button
       >
     <ion-title style="font-weight: bolder; font-size: 30px">
@@ -37,7 +37,7 @@
       <p><i>{{ bottomNotice || 'Menssage not written' }}</i></p>
     </div>
     <!-- Button -->
-    <div class="buttons-container">
+    <div class="buttons-container" (click)="confirm()">
       <ion-button expand="full">Confirm Configuration</ion-button>
     </div>
   </div>

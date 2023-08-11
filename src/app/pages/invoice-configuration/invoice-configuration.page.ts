@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-invoice-configuration',
@@ -11,9 +13,23 @@ export class InvoiceConfigurationPage implements OnInit {
   bottomNotice: string = '';
   isValidImage: boolean = false;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private storageService: StorageService
+  ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const settings = await this.storageService.get('settings')
+    if (settings) {
+      this.logoUrl = settings.logo;
+      this.bottomNotice = settings.footer
+      this.validateLogo()
+    }
+  }
+
+  back() {
+    this.router.navigate(['/invoice-screen'], {replaceUrl: true});
+
   }
 
   validateLogo() {
@@ -27,6 +43,13 @@ export class InvoiceConfigurationPage implements OnInit {
     };
     console.log("Image Validation: " + this.isValidImage);
     img.src = this.logoUrl;
+  }
+
+  confirm() {
+    if (this.isValidImage) {
+      this.storageService.set('settings', {logo: this.logoUrl, footer: this.bottomNotice})
+      this.back()
+    }
   }
 
 }
