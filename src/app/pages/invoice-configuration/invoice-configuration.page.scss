@@ -1,105 +1,102 @@
 .toolbar-gray {
-    --background: #a5a5a5;
-    height: 75px;
-    justify-content: center;
-    display: flex;
+  --background: #a5a5a5;
+  height: 75px;
+  justify-content: center;
+  display: flex;
 }
 
 .back_Button {
-    --color: rgb(0, 0, 0) !important;
-    font-weight: bolder;
-    padding-right: 10px;
+  --color: rgb(0, 0, 0) !important;
+  font-weight: bolder;
+  padding-right: 10px;
 }
 
 .form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .input-container {
+    width: 100%;
+    max-width: 400px; /* Set a maximum width for the input container */
+  }
+
+  .logo-sample {
+    align-items: center;
+    justify-content: center;
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+  }
+
+  ion-item {
+    --background: white;
+    --color: black;
+    border-radius: 5px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    text-align: center;
+
+    // Add a border to the inputs of text
+    &:not(.table-row) {
+      border: 1px solid #d6ebf4;
+    }
+
+    // Remove lines under the inputs of text
+    &.remove-lines-under {
+      --highlight-height: 0; // Set height to 0 to remove lines
+    }
+  }
+
+  /* Remove the black line under the inputs of text */
+  ion-input {
+    background-color: white !important;
+    border: none;
+    text-align: center; /* Center the text inside the inputs of text */
+    --highlight-color: inherit;
+    // Add class to remove border bottom for specific inputs
+    &.no-border-bottom {
+      border-bottom: none;
+    }
+  }
+
+  .buttons-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  
-    .input-container {
-      width: 100%;
-      max-width: 400px; /* Set a maximum width for the input container */
-    }
+    justify-content: space-between;
+    margin: 23px 0;
 
-    .logo-sample {
-      align-items: center;
-      justify-content: center;
-      max-width: 300px;
-      max-height: 300px;
-      width: auto;
-      height: auto;
-    }
-
-    ion-item {
+    ion-button {
       --background: white;
       --color: black;
-      border-radius: 5px;
-      --padding-start: 10px;
-      --padding-end: 10px;
-      text-align: center; 
-      
-      
-      // Add a border to the inputs of text
-      &:not(.table-row) {
-        border: 1px solid #D6EBF4;
-      }
-  
-      // Remove lines under the inputs of text
-      &.remove-lines-under {
-        --highlight-height: 0; // Set height to 0 to remove lines
-      }
-    }
-  
-    /* Remove the black line under the inputs of text */
-    ion-input {
-      background-color: white !important;
-      border: none;
-      text-align: center; /* Center the text inside the inputs of text */
-      --highlight-color: inherit;
-      // Add class to remove border bottom for specific inputs
-      &.no-border-bottom {
-        border-bottom: none;
-      }
-    }
-  
-    
-  
-    .buttons-container {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      margin: 15px 0;
-      ion-button {
-        --background: white;
-        --color: black;
-      }
     }
   }
-  .confirm_Button {
-    --color: rgb(0, 0, 0) !important;
-    font-weight: bolder;
-    padding-right: 10px;
-  }
-  
-  .gear-icon {
-    width: 35px; /* Adjust the width as needed */
-    height: 35px; /* Adjust the height as needed */
-    font-size: 32px; /* Adjust the font size as needed */
-  }
-  .custom-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px; /* Adjust the height as needed */
-    padding-right: 15px;
-  }
-  .title-modal {
-    margin: 20px 20px 0px 20px;
-    align-items: center;
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column-reverse;
-    height: auto;
+}
+.confirm_Button {
+  --color: rgb(0, 0, 0) !important;
+  font-weight: bolder;
+  padding-right: 10px;
+}
+
+.gear-icon {
+  width: 35px; /* Adjust the width as needed */
+  height: 35px; /* Adjust the height as needed */
+  font-size: 32px; /* Adjust the font size as needed */
+}
+.custom-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* Adjust the height as needed */
+  padding-right: 15px;
+}
+.title-modal {
+  margin: 20px 20px 0px 20px;
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column-reverse;
+  height: auto;
 }
