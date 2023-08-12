@@ -61,9 +61,6 @@ export class InvoiceScreenPage implements OnInit {
       price: ['', Validators.required],
     });
     this.concepts.push(newObjectFormGroup);
-    console.log(this.form.value);
-    const x = this.form.value.currentDate.split('T')[0];
-    console.log(new Date(x).toISOString());
   }
 
   generateXML() {
@@ -101,7 +98,7 @@ export class InvoiceScreenPage implements OnInit {
   }*/
 
   deleteItem(index: number) {
-    this.form.value.concepts.splice(index, 1);
+    this.concepts.removeAt(index);
   }
 
   downloadXML(xml: any) {
