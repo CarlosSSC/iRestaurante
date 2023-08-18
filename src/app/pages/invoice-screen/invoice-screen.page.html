@@ -76,7 +76,7 @@
           <ion-item lines="none" style="margin-bottom: 10px">
             <ion-input
               label="Issuer"
-              placeholder="issuer"
+              placeholder="Issuer"
               formControlName="issuer"
             ></ion-input>
           </ion-item>
@@ -84,7 +84,7 @@
           <ion-item lines="none" style="margin-bottom: 10px">
             <ion-input
               label="RFC Issuer"
-              placeholder="rfc issuer"
+              placeholder="RFC Issuer"
               formControlName="rfcIssuer"
             ></ion-input>
           </ion-item>
@@ -92,7 +92,7 @@
           <ion-item lines="none" style="margin-bottom: 10px">
             <ion-input
               label="Receiver"
-              placeholder="receiver"
+              placeholder="Receiver"
               formControlName="receiver"
             ></ion-input>
           </ion-item>
@@ -100,7 +100,7 @@
           <ion-item lines="none" style="margin-bottom: 10px">
             <ion-input
               label="RFC Receiver"
-              placeholder="rfc receiver"
+              placeholder="RFC Receiver"
               formControlName="rfcReceiver"
             ></ion-input>
           </ion-item>
@@ -108,16 +108,16 @@
 
           <ion-item lines="none" style="margin-bottom: 10px">
             <ion-input
-              label="cfdiUse"
-              placeholder="cfdiUse"
+              label="CFDI"
+              placeholder="CFDI"
               formControlName="cfdiUse"
             ></ion-input>
           </ion-item>
 
           <ion-item lines="none" style="margin-bottom: 10px">
             <ion-input
-              label="Tax Regimen"
-              placeholder="taxRegimen"
+              label="TAX Regimen"
+              placeholder="TAX Regimen"
               formControlName="taxRegimen"
             ></ion-input>
           </ion-item>
@@ -126,13 +126,13 @@
             <ion-row>
               <ion-col size="6">
                 <ion-item lines="none">
-                  <ion-input placeholder="name" formControlName="name"></ion-input>
+                  <ion-input placeholder="Company Name" formControlName="name"></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col size="6">
                 <ion-item lines="none">
                   <ion-input
-                    placeholder="address"
+                    placeholder="Company address"
                     formControlName="address"
                   ></ion-input>
                 </ion-item>
@@ -154,8 +154,8 @@
         </div>
         <div class="buttons-container">
           <ion-button expand="full" (click)="addObjectToFormArray()">Add Item</ion-button>
-          <ion-button expand="full" (click)="generateXML()">Generar XML</ion-button>
-          <ion-button expand="full" (click)="generatePDF()">Generar PDF</ion-button>
+          <ion-button expand="full" (click)="generateXML()">Generate XML</ion-button>
+          <ion-button expand="full" (click)="generatePDF()">Generate PDF</ion-button>
           
         </div>
         <!-- Table -->

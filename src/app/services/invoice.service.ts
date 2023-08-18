@@ -26,6 +26,7 @@ export class InvoiceService extends BaseService {
   }
 
   generatePDF(params: any) {
+    console.log(params);
     return this.http.post<any>(`${this.baseURL}invoices/generate_pdf`, params)
     .pipe(map(
       response => {

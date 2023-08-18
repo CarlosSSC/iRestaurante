@@ -34,14 +34,14 @@ export class InvoiceScreenPage implements OnInit {
     this.form = this.formBuilder.group({
       currentDate: [, Validators.required],
       invoiceNumber: ['', [Validators.required]],
-      issuer: ['', [Validators.required]],
-      receiver: ['', [Validators.required]],
+      issuer: ['', [Validators.required]], //sender
+      receiver: ['', [Validators.required]], //client
       rfcReceiver: ['', [Validators.required]],
       rfcIssuer: ['', [Validators.required]],
       cfdiUse: ['', [Validators.required]],
       taxRegimen: ['', [Validators.required]],
       name: ['', []],
-      address: ['', []],
+      address: ['', []], 
       concepts: this.formBuilder.array([]),
       cerFile: [],
       keyFile: [],
@@ -141,7 +141,6 @@ export class InvoiceScreenPage implements OnInit {
       if (settings) {
         this.form.value.settings = settings;
       }
-      console.log(this.form.value);
       this.invoiceService.generatePDF(this.form.value).subscribe((response) => {
         this.saveAndOpenPdf(response.pdf);
       });
