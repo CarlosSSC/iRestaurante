@@ -5,7 +5,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'order-selection',
+    redirectTo: 'invoice-screen',
     pathMatch: 'full'
   },
   {
@@ -42,7 +42,8 @@ const routes: Routes = [
   {
     path: 'add-more',
     loadChildren: () => import('./pages/add-more/add-more.module').then( m => m.AddMorePageModule)
-  },  {
+  },
+  {
     path: 'invoice-screen',
     loadChildren: () => import('./pages/invoice-screen/invoice-screen.module').then( m => m.InvoiceScreenPageModule)
   },
