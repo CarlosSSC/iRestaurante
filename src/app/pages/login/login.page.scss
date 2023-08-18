@@ -45,6 +45,8 @@ ion-col {
     --border-radius: 60px !important;
     --background: rgb(203, 243, 89, 0.82);
     width: 50%;
+    --background-activated: #transparent;
+
   }
   
   .clearButton {
@@ -58,6 +60,19 @@ ion-col {
   
   .no-scroll{
     overflow: hidden;
+  }
+
+  .error-message {
+    color: #691911;
+    background-color: #f4d6d2;
+    border-color: #f0c5c1;
+    border-radius: 10px;
+    border-collapse: separate;
+    font-size: 20px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .image-container {
@@ -78,4 +93,22 @@ ion-col {
   .logo-overlay img {
     max-width: 50%;
     max-height: 50%;
+  }
+
+  .signup-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .signup-link p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+  
+  .signup-link ion-button {
+    vertical-align: middle;
+    margin-left: -9px;
+    font-size: 15px;
   }

@@ -18,7 +18,25 @@ ion-col {
     justify-content: center;
     align-items: center;
   }
+
+  h2 {
+    color: white;
+  }
+
+  p {
+    color: white;
+  }
   
+  .name {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .input-wrapper {
+    flex: 1;
+    margin-right: 10px; /* Adjust this value as needed */
+  }
+
   .login-form {
     width: 100%;
     max-width: 400px;
@@ -43,11 +61,11 @@ ion-col {
   }
   
   .gbutton {
-    margin-top: 30px;
+    margin-top: 15px;
     margin-bottom: 30px;
     --border-radius: 60px !important;
     --background: rgb(203, 243, 89, 0.82);
-    width: 50%;
+    width: 198px;
   }
   
   .clearButton {
@@ -71,4 +89,21 @@ ion-col {
     width: 100px; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
     margin-bottom: 10px; /* Add space between the logo and the heading */
+  }
+
+  .signup-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .signup-link p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+  }
+  
+  .signup-link ion-button {
+    vertical-align: middle;
+    margin-left: -15px;
   }

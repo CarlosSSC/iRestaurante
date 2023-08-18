@@ -1,0 +1,120 @@
+@import 'swiper/swiper-bundle.min.css';
+
+ion-content {
+  --background: #ffffff;
+}
+
+.ion-padding {
+  --padding-start: var(--ion-padding, 16px);
+  --padding-end: var(--ion-padding, 16px);
+  --padding-top: var(--ion-padding, 16px);
+  --padding-bottom: var(--ion-padding, 16px);
+  padding-inline-start: var(--ion-padding, 16px);
+  padding-inline-end: var(--ion-padding, 16px);
+  padding-top: var(--ion-padding, 10px);
+  padding-bottom: var(--ion-padding, 10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-button {
+  width: 143px;
+  height: 113px;
+  left: 215px;
+  top: 310px;
+  border-radius: 10px !important;
+  overflow: hidden;
+  perspective: 1px;
+  --background: rgba(217, 217, 217, 1);
+  --background-activated: #transparent;
+
+}
+
+.button-center {
+  align-items: center;
+  text-align: center;
+  border-radius: 10px !important;
+}
+
+.button-row {
+  margin-top: 20px;
+}
+
+.button-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.sticky-footer {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 2; /* Ensure the button is above other content */
+  background-color: transparent; /* Adjust the background color as needed */
+}
+
+.view-order-button {
+  width: 100%;
+  --background: #60B8F9;
+  border-radius: 15px;
+  overflow: hidden;
+  height: 60px;
+}
+
+.horizontal-line {
+  border-top: 1px solid rgba(209, 209, 209, 1);
+  width: 80%;
+  margin-top: 20px;
+}
+
+.header-item {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  padding-top: 22px;
+  padding-left: 20px;
+}
+
+.horizontal-buttons-container {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  border-radius: 10px !important;
+  
+}
+
+.horizontal-button {
+  display: inline-block;
+  margin-right: 10px;
+  --background: #DF2121;
+  --background-activated: #transparent;
+  border-radius: 10px !important;
+  color: white;
+  overflow: hidden;
+  perspective: 1px;
+  width: 88px;
+  height: 34px;
+
+  &.selected {
+    --background: #389afd;
+  }
+}
+
+.box-button-container {
+  border: 1px solid #D1D1D1; /* Gray border */
+  border-radius: 5px;
+  margin: 0 auto; /* Center the item horizontally */
+  padding: 10px; /* Add some padding for better appearance */
+}
+
+
+

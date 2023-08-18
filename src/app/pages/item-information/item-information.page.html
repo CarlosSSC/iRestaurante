@@ -1,0 +1,28 @@
+<app-header/>
+
+<ion-content>
+  <div class="image-container">
+    <img src="assets/images/itemInfo.jpeg" alt="Image" class="image" />
+  </div>
+  <div class="white-rectangle">
+    <div class="content-container">
+      <ion-text class="header-item">Egg</ion-text>
+      <ion-text class="price">$15</ion-text>
+      <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+      <div class="quantity-section">
+        <span class="quantity-label">Quantity:</span>
+        <div class="counter-section">
+          <button class="counter-button" (click)="decreaseCounter()">-</button>
+          <span class="counter-value">{{counter}}</span>
+          <button class="counter-button" (click)="increaseCounter()">+</button>
+        </div>
+      </div>
+      <ion-text class="smallHeader">Any extra instructions?</ion-text>
+      <div class="textbox-section">
+        <textarea class="custom-textbox" rows="5" placeholder="Enter your message"></textarea>
+      </div>
+      <ion-button class="buttonB" type="submit">ADD TO CART</ion-button>
+    </div>
+  </div>
+</ion-content>

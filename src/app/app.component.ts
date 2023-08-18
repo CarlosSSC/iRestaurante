@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { register } from 'swiper/element/bundle';
+
+register();
+
 
 @Component({
   selector: 'app-root',

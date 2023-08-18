@@ -1,0 +1,135 @@
+.toolbar-gray {
+  --background: #a5a5a5;
+  height: 75px;
+  justify-content: center;
+  display: flex;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
+.form-container {
+  flex: 2;
+  padding: 0 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  max-height: calc(100vh - 121px);
+
+  .input-container {
+    width: 100%;
+  }
+
+  ion-item {
+    --background: white;
+    --color: black;
+    border-radius: 5px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    text-align: center;
+
+    // Add a border to the inputs of text
+    &:not(.table-row) {
+      border: 1px solid #d6ebf4;
+    }
+  }
+}
+
+.table-header {
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.table-container {
+  position: relative;
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: calc(
+    100vh - 56px
+  ); /* Adjust 56px to match your header's height */
+  overflow-y: auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  ion-row {
+    border-bottom: 2px solid #948f8f;
+  }
+
+  ion-col {
+    padding: 5px;
+    justify-content: center;
+    display: flex;
+
+    ion-input {
+      --highlight-color: #948f8f;
+    }
+
+    ion-item {
+      width: 100%;
+    }
+
+    &:not(:last-child) {
+      border-right: 2px solid #948f8f;
+    }
+  }
+}
+
+.table-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  ion-grid {
+    background-color: #f4f4f4;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+
+  ion-button {
+    --background: white;
+    --color: black;
+  }
+}
+
+.upload_Button {
+  --color: rgb(0, 0, 0) !important;
+  font-weight: bolder;
+  padding-right: 10px;
+}
+
+.gear-icon {
+  width: 35px;
+  height: 35px;
+  font-size: 32px;
+}
+
+.custom-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding-right: 15px;
+}
+
+.title-modal {
+  margin: 20px 20px 0px 20px;
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column-reverse;
+  height: auto;
+}

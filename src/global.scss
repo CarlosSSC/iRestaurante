@@ -24,3 +24,45 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+ion-modal{
+    --background: transparent;
+    --width: 400px;
+    --height: 400px;
+
+    &::part(content){
+        backdrop-filter: blur(6px);
+    }
+
+    ion-content{
+      --background: transparent;
+      --padding-top: 25vh;
+      --padding-start: 20vh;
+      --padding-end: 20vh;
+
+    }
+
+    ion-datetime{
+        border-radius: 8px;
+    }
+}
+
+@font-face {
+    font-family: 'inter';
+    font-style: normal;
+    font-weight: normal;
+    src: url(./assets/fonts/Inter-Regular.ttf);
+}
+
+@font-face{
+    font-family: 'inter-extraBold';
+    src: url(./assets/fonts/Inter-ExtraBold.ttf);
+}
+
+    // font-family: 'inter-f';
+    // src: url(./assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+
+
+:root {
+    --ion-font-family: 'inter';
+}

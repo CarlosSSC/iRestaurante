@@ -1,0 +1,51 @@
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col size="12" size-md="8" offset-md="2" size-lg="6" offset-lg="3">
+        <div class="login-form">
+          <div class="logo-container">
+            <img src="assets/images/Blank_Square.svg" class="logo-image">
+          </div>
+
+          <div class="title-container">
+            SELECT YOUR ORDER TYPE
+          </div>
+
+          <ion-button fill="outline" size="large" class="custom-button" id="open-RestaurantOption" expand="block">EAT IN RESTAURANT</ion-button>
+          <ion-button fill="outline" size="large" class="custom-button" routerLink="/main-screen">PICKUP ORDER</ion-button>
+          <ion-button fill="outline" size="large" class="custom-button" id="open-Delivery">DELIVERY</ion-button>
+
+
+          <ion-modal id="modal_Restaurant" #modal trigger="open-RestaurantOption">
+            <ng-template>
+              <div class="wrapper">
+                <div class="title-modal">
+                  SCAN THE QR ON YOUR TABLE TO SEE THE MENU 
+                </div>
+                <ion-button class="modalButton" type="submit">SCAN QR</ion-button>
+              </div>
+            </ng-template>
+          </ion-modal>
+
+          <ion-modal id="modal_Delivery" #modal trigger="open-Delivery">
+            <ng-template>
+              <div class="wrapper">
+                <div class="title-modal">
+                  SELECT A RESTAURANT
+                </div>
+
+                <ion-select class="dropdown_Delivery" placeholder="Select">
+                  <ion-select-option value="restaurant1">Restaurant 1</ion-select-option>
+                  <ion-select-option value="restaurant2">Restaurant 2</ion-select-option>
+                  <ion-select-option value="restaurant3">Restaurant 3</ion-select-option>
+                </ion-select>
+
+                <ion-button class="gbutton" type="submit">CONFIRM</ion-button>
+              </div>
+            </ng-template>
+          </ion-modal>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

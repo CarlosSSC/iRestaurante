@@ -1,0 +1,28 @@
+<ion-menu side="start" content-id="main-content">
+
+  <ion-content>
+    <div class="menu-logo">
+      <img src="assets/images/Blank_Square.svg" alt="Logo">
+    </div>
+
+    <div class="buttonsContainer">
+      <ion-button class="BTbutton" type="submit" routerLink="">MY INFORMATION</ion-button>
+      <ion-button class="BTbutton" type="submit" routerLink="">MY ADDRESSES</ion-button>
+      <ion-button class="BTbutton" type="submit" routerLink="">INVOICES</ion-button>
+      <ion-button class="BTbutton" type="submit" routerLink="">MY ORDERS</ion-button>
+      <ion-button class="RTbutton" type="submit" routerLink="">SIGN OUT</ion-button>
+    </div>
+
+    
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main-content"></ion-router-outlet>
+
+<ion-toolbar class="toolbar-style">
+  <ion-buttons slot="start">
+    <ion-menu-button class="button-style" auto-hide="false"></ion-menu-button>
+  </ion-buttons>
+  
+  <ion-title>iRestaurant</ion-title>
+</ion-toolbar>

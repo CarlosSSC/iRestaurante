@@ -1,0 +1,57 @@
+<app-header/>
+
+<ion-content [fullscreen]="true">
+  <div class="upper-container">
+    <ion-text class="header-text">PAYMENT</ion-text>
+    <div class="selected-order">
+      <ion-text>Order: </ion-text> <ion-text style="font-weight: bold; font-size: 17px;"> Delivery</ion-text>
+    </div>
+    <div class="image-list" #productList></div>
+    <hr class="horizontal-line">
+  </div>
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <ion-button fill="clear" class="btn" id="open-Address">YOUR ADDRESS <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+  </div>
+  <div class="white-rectangle">
+    <ion-text class="headerRectangle">TOTAL : $$$</ion-text>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+      <ion-button class="buttonR" id="open-paymentMethod">SELECT PAYMENT METHOD</ion-button>
+      <ion-button class="buttonB" type="submit" routerLink="/payment-screen">ORDER NOW</ion-button>
+    </div>
+  </div>
+
+  <ion-modal id="modal_Address" #modal trigger="open-Address">
+    <ng-template>
+      <div class="wrapper">
+        <div class="title-modal">
+          SELECT YOUR ADDRESS 
+        </div>
+        <div class="input-modal">
+            <ion-input type="text" style="color: black; text-align: center;"></ion-input>
+        </div>
+        <div>
+          <ion-text style="color: white;">Need another one? Add it <ion-button size="small" class="clearButton" fill="clear"> here</ion-button> </ion-text> 
+        </div>
+        <ion-button class="modalButton" type="submit">CONFIRM</ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal id="modal_Address" #modal trigger="open-paymentMethod">
+    <ng-template>
+      <div class="wrapper">
+        <div class="title-modal">
+          PAYMENT METHOD
+        </div>
+        <div class="dropdown-modal">
+          <ion-select class="dropdown_Delivery" placeholder="Select payment method">
+            <ion-select-option value="card">Card</ion-select-option>
+            <ion-select-option value="cash">Cash</ion-select-option>
+          </ion-select>
+        </div>
+        <ion-button class="modalButton" type="submit">Confirm method</ion-button>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>
